@@ -54,13 +54,65 @@
     <Compile Include="DTOS\Dto_Proveedor.cs" />
     <Compile Include="DTOS\Dto_Stock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SistemaFacturacion.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFacturacion.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFacturacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaFacturacion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaFacturacion.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCliente.cs">
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TEntrada.cs">
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFacturacion.cs">
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TProducto.cs">
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TProveedor.cs">
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="SistemaFacturacion.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SistemaFacturacion.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SistemaFacturacion.edmx.diagram">
+      <DependentUpon>SistemaFacturacion.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SistemaFacturacion.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SistemaFacturacion.edmx</DependentUpon>
+      <LastGenOutput>SistemaFacturacion.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SistemaFacturacion.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SistemaFacturacion.edmx</DependentUpon>
+      <LastGenOutput>SistemaFacturacion.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
