@@ -1,0 +1,60 @@
+﻿@model C_Datos.TProveedor
+
+<!-- Delete Modal HTML -->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#DelButton').click(function () {
+                alert("Elimiando...");
+                $("#dialog").dialog();
+            });
+        });
+    </script>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <h3>¿Está seguro de que desea eliminar estos registros?</h3>
+    <div class="display-label" style="display:none;">
+        @Html.DisplayNameFor(model => model.Id_Proveedor)
+    </div>
+
+    <div class="display-label ">
+        <label style="font-family:'Bookman Old Style';">Nombre</label>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+    <div class="display-label ">
+        <label style="font-family:'Bookman Old Style';">RNC/Cedula</label>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RNC)
+    </div>
+    <div class="display-label">
+        <label style="font-family:'Bookman Old Style';">Teléfono</label>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Telefono)
+    </div>
+    <div class="display-label">
+        <label style="font-family:'Bookman Old Style';">Correo</label>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Correo)
+    </div>
+    @using (Html.BeginForm("Eliminar", "Proveedores"))
+    {
+        <p>
+            <br />
+            @Html.HiddenFor(model => model.Id_Proveedor)
+            <input type="submit" value="Delete" id="DelButton" onclick="Delete();" class="btn btn-danger" />
+        </p>
+    }
+</body>
+</html>
+

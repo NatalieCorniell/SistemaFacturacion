@@ -1,0 +1,2 @@
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\obj\Debug\C_Dominio.csproj.AssemblyReference.cache
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\obj\Debug\C_Dominio.csproj.CoreCompileInputs.cache

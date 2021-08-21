@@ -1,0 +1,12 @@
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\bin\Debug\C_Entidades.dll.config
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\bin\Debug\C_Entidades.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\bin\Debug\C_Entidades.pdb
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\bin\Debug\EntityFramework.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\bin\Debug\EntityFramework.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\obj\Debug\C_Entidades.csproj.CoreCompileInputs.cache
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\obj\Debug\C_Entidades.csproj.CopyComplete
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\obj\Debug\C_Entidades.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\obj\Debug\C_Entidades.pdb
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Entidades\obj\Debug\C_Entidades.csproj.AssemblyReference.cache
