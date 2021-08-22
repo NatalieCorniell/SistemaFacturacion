@@ -18,6 +18,7 @@ namespace C_Datos
         public TProveedor()
         {
             this.TEntradas = new HashSet<TEntrada>();
+            this.TStockProducts = new HashSet<TStockProduct>();
         }
     
         public int Id_Proveedor { get; set; }
@@ -28,5 +29,7 @@ namespace C_Datos
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TEntrada> TEntradas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TStockProduct> TStockProducts { get; set; }
     }
 }

@@ -69,6 +69,10 @@
     <Property Name="Id_Stock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Cantidad" Type="int" />
     <Property Name="Id_Producto" Type="int" />
+    <Property Name="Nombre_Producto" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre_Proveedor" Type="varchar" MaxLength="50" />
+    <Property Name="Id_Proveedor" Type="int" />
+    <Property Name="Fecha" Type="date" />
   </EntityType>
   <Association Name="FK_StockProd">
     <End Role="TProducto" Type="Self.TProducto" Multiplicity="0..1" />
@@ -102,6 +106,18 @@
         <PropertyRef Name="Id_Proveedor" />
       </Principal>
       <Dependent Role="TEntradas">
+        <PropertyRef Name="Id_Proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StockProveedores">
+    <End Role="TProveedor" Type="Self.TProveedor" Multiplicity="0..1" />
+    <End Role="TStockProducts" Type="Self.TStockProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TProveedor">
+        <PropertyRef Name="Id_Proveedor" />
+      </Principal>
+      <Dependent Role="TStockProducts">
         <PropertyRef Name="Id_Proveedor" />
       </Dependent>
     </ReferentialConstraint>
@@ -156,6 +172,10 @@
     <AssociationSet Name="FK_StockProveedor" Association="Self.FK_StockProveedor">
       <End Role="TProveedor" EntitySet="TProveedor" />
       <End Role="TEntradas" EntitySet="TEntradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StockProveedores" Association="Self.FK_StockProveedores">
+      <End Role="TProveedor" EntitySet="TProveedor" />
+      <End Role="TStockProducts" EntitySet="TStockProducts" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

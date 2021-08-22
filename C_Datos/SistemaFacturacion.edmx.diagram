@@ -15,6 +15,7 @@
         <AssociationConnector Association="SistemaFacturacionModel.FK_StockProveedor" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SistemaFacturacionModel.TStockProduct" Width="1.5" PointX="3" PointY="8.375" />
         <AssociationConnector Association="SistemaFacturacionModel.FK_StockProd" />
+        <AssociationConnector Association="SistemaFacturacionModel.FK_StockProveedores" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

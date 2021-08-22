@@ -17,10 +17,13 @@ namespace Presentacion.Controllers
 
         readonly Stock stock = new Stock();
         readonly Mercancia Mercancia = new Mercancia();
+        readonly Proveedor Prov = new Proveedor();
+
 
         // GET: producto
         public ActionResult Principal()
         {
+            stock.RefreshDB();
             var Lista = new List<Dto_Stock>();
             var model = stock.Listar();
             foreach (var item in model)
@@ -28,16 +31,21 @@ namespace Presentacion.Controllers
                 Dto_Stock Dto_Producto = new Dto_Stock
                 {
                     Id_Producto = (int)item.Id_Producto,
-                    Cantidad = (int)item.Cantidad
+                    Cantidad = (int)item.Cantidad,
+                    Nombre_Proveedor = item.Nombre_Proveedor,
+                    Nombre_Producto = item.Nombre_Producto,
+                    Fecha = (DateTime)item.Fecha
                 };
                 Lista.Add(Dto_Producto);
             }
-            return View("MercanciaView", Lista);
+            return View("StockView", Lista);
         }
-        public ActionResult StockView()
+      
+        private List<Dto_Stock> Listado()
         {
             var Lista = new List<Dto_Stock>();
             TProducto productos = new TProducto();
+            List<Dto_Stock> prod = new List<Dto_Stock>();
 
             var model = stock.Listar();
             foreach (var item in model)
@@ -46,30 +54,66 @@ namespace Presentacion.Controllers
                 {
                     Id_Producto = (int)item.Id_Producto,
                     Nombre_Producto = Mercancia.Listar().Find(x => x.Id_Producto == item.Id_Producto).Nombre,
-                    Cantidad = (int)item.Cantidad
-                };
-                Dto_Stock.TProductos = new List<SelectListItem>
-                {
-                    new SelectListItem() { Text = Dto_Stock.Nombre_Producto, Value = Dto_Stock.Id_Producto.ToString(), Selected = false }
+                    Id_Proveedor = Prov.Listar().Find(x => x.Id_Proveedor == item.Id_Proveedor).Id_Proveedor,
+                    Nombre_Proveedor = Prov.Listar().Find(x => x.Id_Proveedor == item.Id_Proveedor).Nombre,
+                    Cantidad = (int)item.Cantidad,
+                    Fecha = (DateTime)item.Fecha
                 };
                 Lista.Add(Dto_Stock);
             }
-            return View(Lista);
+            return Lista;
+        }
 
+        public ActionResult StockView()
+        {
+            return View(Listado());
         }
 
         [HttpPost]
         public ActionResult Agregar(TStockProduct stockProducto)
         {
-            var Cantidad = stockProducto.Cantidad;
+           
+            var cantidad = +stockProducto.Cantidad;
 
-            if (Cantidad > 0)
+            ViewBag.Products = new SelectList(Mercancia.Listar(), "Id_Producto", "Nombre", "Id_Producto");
+            ViewBag.Proveedores = new SelectList(Prov.Listar(), "Id_Proveedor", "Nombre", "Id_Proveedor");
+
+            if (cantidad > 0 && stockProducto.Id_Proveedor > 0 && stockProducto.Id_Proveedor > 0)
             {
+                stockProducto.Fecha = DateTime.Now;
+                stockProducto.Nombre_Producto = Mercancia.Listar().Find(x => x.Id_Producto == stockProducto.Id_Producto).Nombre;
+                stockProducto.Nombre_Proveedor = Prov.Listar().Find(x => x.Id_Proveedor == stockProducto.Id_Proveedor).Nombre;
+
+                if (stock.ValidarExistencia(stockProducto.Nombre_Producto, stockProducto.Nombre_Proveedor))
+                {
+                    //Existe
+                    stock.Editar(stockProducto);
+                    stock.RefreshDB();
+                    return Principal();
+                }
                 stock.Guardar(stockProducto);
                 return Principal();
             }
+
+
             return PartialView("../Stock/Partials/AgregarPartial");
         }
+        //public List<SelectListItem> DropdownList()
+        //{
+        //    List<SelectListItem> items = new List<SelectListItem>();
+        //    var list = Mercancia.Listar();
+        //    foreach (var item in list)
+        //    {
+        //        items.Add(new SelectListItem
+        //        {
+        //            Text = item.Nombre.ToString(),
+        //            Value = item.Id_Producto.ToString(),
+        //            Selected = false
+        //        });
+        //    }
+
+        //    return items;
+        //}
         public ActionResult Editar(TStockProduct stockProducto)
         {
             var Cantidad = stockProducto.Cantidad;

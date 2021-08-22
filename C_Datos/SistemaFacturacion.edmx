@@ -74,6 +74,10 @@
           <Property Name="Id_Stock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cantidad" Type="int" />
           <Property Name="Id_Producto" Type="int" />
+          <Property Name="Nombre_Producto" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre_Proveedor" Type="varchar" MaxLength="50" />
+          <Property Name="Id_Proveedor" Type="int" />
+          <Property Name="Fecha" Type="date" />
         </EntityType>
         <Association Name="FK_StockProd">
           <End Role="TProducto" Type="Self.TProducto" Multiplicity="0..1" />
@@ -107,6 +111,18 @@
               <PropertyRef Name="Id_Proveedor" />
             </Principal>
             <Dependent Role="TEntradas">
+              <PropertyRef Name="Id_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockProveedores">
+          <End Role="TProveedor" Type="Self.TProveedor" Multiplicity="0..1" />
+          <End Role="TStockProducts" Type="Self.TStockProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TProveedor">
+              <PropertyRef Name="Id_Proveedor" />
+            </Principal>
+            <Dependent Role="TStockProducts">
               <PropertyRef Name="Id_Proveedor" />
             </Dependent>
           </ReferentialConstraint>
@@ -161,6 +177,10 @@
           <AssociationSet Name="FK_StockProveedor" Association="Self.FK_StockProveedor">
             <End Role="TProveedor" EntitySet="TProveedor" />
             <End Role="TEntradas" EntitySet="TEntradas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockProveedores" Association="Self.FK_StockProveedores">
+            <End Role="TProveedor" EntitySet="TProveedor" />
+            <End Role="TStockProducts" EntitySet="TStockProducts" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -233,6 +253,7 @@
           <Property Name="Telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="TEntradas" Relationship="Self.FK_StockProveedor" FromRole="TProveedor" ToRole="TEntradas" />
+          <NavigationProperty Name="TStockProducts" Relationship="SistemaFacturacionModel.FK_StockProveedores" FromRole="TProveedor" ToRole="TStockProduct" />
         </EntityType>
         <Association Name="FK_StockProducto">
           <End Role="TProducto" Type="Self.TProducto" Multiplicity="0..1" />
@@ -308,6 +329,10 @@
             <End Role="TProducto" EntitySet="TProductoes" />
             <End Role="TStockProduct" EntitySet="TStockProducts" />
           </AssociationSet>
+          <AssociationSet Name="FK_StockProveedores" Association="SistemaFacturacionModel.FK_StockProveedores">
+            <End Role="TProveedor" EntitySet="TProveedors" />
+            <End Role="TStockProduct" EntitySet="TStockProducts" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -328,6 +353,11 @@
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="Id_Producto" Type="Int32" />
           <NavigationProperty Name="TProducto" Relationship="SistemaFacturacionModel.FK_StockProd" FromRole="TStockProduct" ToRole="TProducto" />
+          <Property Name="Id_Proveedor" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TProveedor" Relationship="SistemaFacturacionModel.FK_StockProveedores" FromRole="TStockProduct" ToRole="TProveedor" />
+          <Property Name="Nombre_Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_StockProd">
           <End Type="SistemaFacturacionModel.TProducto" Role="TProducto" Multiplicity="0..1" />
@@ -338,6 +368,18 @@
             </Principal>
             <Dependent Role="TStockProduct">
               <PropertyRef Name="Id_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockProveedores">
+          <End Type="SistemaFacturacionModel.TProveedor" Role="TProveedor" Multiplicity="0..1" />
+          <End Type="SistemaFacturacionModel.TStockProduct" Role="TStockProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TProveedor">
+              <PropertyRef Name="Id_Proveedor" />
+            </Principal>
+            <Dependent Role="TStockProduct">
+              <PropertyRef Name="Id_Proveedor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -442,6 +484,10 @@
           <EntitySetMapping Name="TStockProducts">
             <EntityTypeMapping TypeName="SistemaFacturacionModel.TStockProduct">
               <MappingFragment StoreEntitySet="TStockProducts">
+                <ScalarProperty Name="Nombre_Proveedor" ColumnName="Nombre_Proveedor" />
+                <ScalarProperty Name="Nombre_Producto" ColumnName="Nombre_Producto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id_Proveedor" ColumnName="Id_Proveedor" />
                 <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Id_Stock" ColumnName="Id_Stock" />

@@ -14,9 +14,16 @@ namespace C_Datos.DTOS
         [Required]
         public int Id_Producto { get; set; }
         [Required]
+        public int Id_Proveedor { get; set; }
+        [Required]
         public string Nombre_Producto { get; set; }
         [Required]
+        public string Nombre_Proveedor { get; set; }
+        [Required]
         public int Cantidad { get; set; }
+        [Required]
+        public DateTime Fecha { get; set; }
         public List<SelectListItem> TProductos { get; set; }
+        public List<SelectListItem> TProveedores { get; set; }
     }
 }

@@ -15,7 +15,20 @@ namespace C_Dominio.Procesos
 
         public void Guardar(TStockProduct model)
         {
+
             db.TStockProducts.Add(model);
+            GuardarEntrada(model);
+            db.Entry(model).State = EntityState.Added;
+            db.SaveChanges();
+        }
+        public void GuardarEntrada(TStockProduct model)
+        {
+
+            foreach (var item in collection)
+            {
+
+            }
+            db.TEntradas.Add(model);
             db.Entry(model).State = EntityState.Added;
             db.SaveChanges();
         }
@@ -37,13 +50,12 @@ namespace C_Dominio.Procesos
             var producto = new TStockProduct();
             using (var context = new SistemaFacturacionEntities())
             {
-                producto = (context.TStockProducts.Where(a => a.Id_Stock == Element.Id_Stock)).SingleOrDefault();
+                producto = (context.TStockProducts.Where(a => a.Id_Producto == Element.Id_Producto)).SingleOrDefault();
             }
 
             if (producto != null)
             {
-                producto.Id_Producto = Element.Id_Producto;
-                producto.Cantidad = Element.Cantidad;
+                producto.Cantidad += Element.Cantidad;
             }
 
             using (var dbcontext = new SistemaFacturacionEntities())
@@ -69,14 +81,29 @@ namespace C_Dominio.Procesos
             }
         }
         /// <summary>
-        /// in testing....
         /// </summary>
         /// <param name="list"></param>
-        /// <param name="index"></param>
         /// <returns></returns>
-        public TStockProduct GetElement(List<TStockProduct> list, int index)
+        public bool ValidarExistencia(string producto, string proveedor)
         {
-            return list[index];
+            var ProductInStoock = Listar().Find(x => x.Nombre_Producto == producto);
+
+            if (ProductInStoock != null && ProductInStoock.Nombre_Proveedor == proveedor)
+            {
+                //Existe
+                return true;
+            }
+            return false;
+        }
+        public void RefreshDB()
+        {
+            using (SistemaFacturacionEntities Context = new SistemaFacturacionEntities())
+            {
+                foreach (var entity in Context.ChangeTracker.Entries())
+                {
+                    entity.Reload();
+                }
+            }
         }
     }
 }

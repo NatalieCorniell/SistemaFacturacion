@@ -24,3 +24,5 @@ C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.Razor.xml
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.Helpers.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.Helpers.xml

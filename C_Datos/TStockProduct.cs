@@ -17,7 +17,12 @@ namespace C_Datos
         public int Id_Stock { get; set; }
         public Nullable<int> Cantidad { get; set; }
         public Nullable<int> Id_Producto { get; set; }
+        public Nullable<int> Id_Proveedor { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
+        public string Nombre_Producto { get; set; }
+        public string Nombre_Proveedor { get; set; }
     
         public virtual TProducto TProducto { get; set; }
+        public virtual TProveedor TProveedor { get; set; }
     }
 }

@@ -96,6 +96,10 @@
     <EntitySetMapping Name="TStockProducts">
       <EntityTypeMapping TypeName="SistemaFacturacionModel.TStockProduct">
         <MappingFragment StoreEntitySet="TStockProducts">
+          <ScalarProperty Name="Nombre_Proveedor" ColumnName="Nombre_Proveedor" />
+          <ScalarProperty Name="Nombre_Producto" ColumnName="Nombre_Producto" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id_Proveedor" ColumnName="Id_Proveedor" />
           <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
           <ScalarProperty Name="Id_Stock" ColumnName="Id_Stock" />
