@@ -1,10 +1,7 @@
-﻿@model C_Datos.TProveedor
+﻿@model C_Datos.TCliente
 
 <!-- Delete Modal HTML -->
 <h3>¿Está seguro de que desea eliminar estos registros?</h3>
-<div class="display-label" style="display:none;">
-    @Html.DisplayNameFor(model => model.Id_Proveedor)
-</div>
 
 <div class="display-label ">
     <label style="font-family:'Bookman Old Style';">Nombre</label>
@@ -29,9 +26,14 @@
 </div>
 <div class="display-field">
     @Html.DisplayFor(model => model.Correo)
+</div><div class="display-label ">
+    <label style="font-family:'Bookman Old Style';">Categoria</label>
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Categoria)
 </div>
 <p>
     <br />
-    <input type="submit" value="Eliminar" id="@Model.Id_Proveedor" onclick="Delete(this.id)" class="btn btn-danger" />
+    <input type="submit" value="Eliminar" id="@Model.Id_Cliente" onclick="Delete(this.id)" class="btn btn-danger" />
 </p>
 

@@ -223,8 +223,8 @@
     <Content Include="Views\Shared\NavBar.cshtml" />
     <Content Include="Views\Cliente\Partials\AgregarPartial.cshtml" />
     <Content Include="Views\Cliente\Partials\EditarPartial.cshtml" />
-    <Content Include="Views\Cliente\Partials\EliminarPartial.cshtml" />
     <Content Include="Views\Cliente\ClienteView.cshtml" />
+    <Content Include="Views\Cliente\Partials\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -52,7 +52,6 @@ namespace Presentacion.Controllers.CRUD
             }
             return View(Lista);
         }
-
         [HttpPost]
         public ActionResult Agregar(TCliente cliente)
         {
@@ -97,7 +96,7 @@ namespace Presentacion.Controllers.CRUD
                 _TCliente.Eliminar((int)id);
                 return Principal();
             }
-            return RedirectToAction("../Cliente/Partials/EliminarPartial");
+            return RedirectToAction("../Cliente/Partials/Eliminar");
         }
         [HttpGet]
         public ActionResult GetID(int? ID)
@@ -122,7 +121,7 @@ namespace Presentacion.Controllers.CRUD
             {
                 return HttpNotFound();
             }
-            return PartialView("../Cliente/Partials/EliminarPartial", cliente);
+            return PartialView("../Cliente/Partials/Eliminar", cliente);
         }
     }
 }

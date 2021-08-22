@@ -1,5 +1,3 @@
-C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\obj\Debug\Presentacion.csproj.AssemblyReference.cache
-C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\obj\Debug\Presentacion.csproj.CoreCompileInputs.cache
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\bin\Presentacion.dll.config
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\bin\Presentacion.dll
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\bin\Presentacion.pdb
@@ -84,6 +82,8 @@ C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\bin\System.Web.Web
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\bin\Newtonsoft.Json.xml
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\bin\Antlr3.Runtime.pdb
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\obj\Debug\Presentacion.csproj.AssemblyReference.cache
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\obj\Debug\Presentacion.csproj.CoreCompileInputs.cache
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\obj\Debug\Presentacion.csproj.CopyComplete
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\obj\Debug\Presentacion.dll
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\Presentacion\obj\Debug\Presentacion.pdb

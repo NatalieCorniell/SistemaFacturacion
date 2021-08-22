@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<C_Datos.DTOS.Dto_Cliente>
-@using C_Datos;
 @{
     Layout = "~/Views/Shared/Master.cshtml";
 }
@@ -12,7 +11,7 @@
                     <h2>Mantenimiento<b> Clientes</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#agregarProveedor" class="btn btn-success" data-toggle="modal" onclick="AddData();"><i class="material-icons">&#xE147;</i> <span></span></a>
+                    <a href="#agregar" class="btn btn-success" data-toggle="modal" onclick="AddData();"><i class="material-icons">&#xE147;</i> <span></span></a>
                 </div>
             </div>
         </div>
@@ -28,18 +27,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var Proveedor in Model.ToList())
+                @foreach (var Cliente in Model.ToList())
                 {
                 <tr>
-                    <td>@Proveedor.Id_Cliente</td>
-                    <td>@Proveedor.Nombre</td>
-                    <td>@Proveedor.RNC</td>
-                    <td>@Proveedor.Telefono</td>
-                    <td>@Proveedor.Correo</td>
-                    <td>@Proveedor.Categoria</td>
+                    <td>@Cliente.Id_Cliente</td>
+                    <td>@Cliente.Nombre</td>
+                    <td>@Cliente.RNC</td>
+                    <td>@Cliente.Telefono</td>
+                    <td>@Cliente.Correo</td>
+                    <td>@Cliente.Categoria</td>
                     <td>
-                        <a href="#editEmployeeModal" id="@Proveedor.Id_Cliente" onclick="GetbyID(this.id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                        <a href="#eliminarProveedor" id="@Proveedor.Id_Cliente" onclick="GetbyDelID(this.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                        <a href="#editEmployeeModal" id="@Cliente.Id_Cliente" onclick="GetbyID(this.id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                        <a href="#eliminarCliente" id="@Cliente.Id_Cliente" onclick="GetbyDelID(this.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                     </td>
                 </tr>
                 }
