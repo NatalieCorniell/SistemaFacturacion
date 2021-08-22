@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/Master.cshtml";
 }
 
-<div class="container">
+<div class="container container-stock">
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
@@ -19,25 +19,24 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Cantidad</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var Proveedor in Model.ToList())
                 {
-                    <tr>
-                        <td>@Proveedor.Nombre_Producto</td>
-                        <td>@Proveedor.Cantidad</td>
-                        <td>
-                            <a href="#editEmployeeModal" id="@Proveedor.Id_Producto" onclick="GetbyID(this.id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                            <a href="#eliminarProveedor" id="@Proveedor.Id_Producto" onclick="GetbyDelID(this.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                        </td>
-                        <td>
-                            <a href="#AgregarAStock" id="@Proveedor.Id_Producto" onclick="" class="add" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Agregar">&#xE147;</i></a>
-                            <a href="#AgregarAStock" id="@Proveedor.Id_Producto" onclick="" class="warning" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Quitar">&#xe14c;</i></a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>@Proveedor.Id_Producto</td>
+                    <td>@Proveedor.Nombre_Producto</td>
+                    <td>@Proveedor.Cantidad</td>
+                    <td>
+                        <a href="#editEmployeeModal" id="@Proveedor.Id_Producto" onclick="GetbyID(this.id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                        <a href="#eliminarProveedor" id="@Proveedor.Id_Producto" onclick="GetbyDelID(this.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

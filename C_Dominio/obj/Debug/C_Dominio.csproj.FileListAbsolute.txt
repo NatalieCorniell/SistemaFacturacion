@@ -13,3 +13,14 @@ C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\EntityFrame
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\obj\Debug\C_Dominio.csproj.CopyComplete
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\obj\Debug\C_Dominio.dll
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\obj\Debug\C_Dominio.pdb
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.Mvc.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.WebPages.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.Razor.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.Mvc.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.WebPages.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.Razor.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Dominio\bin\Debug\System.Web.WebPages.Deployment.xml

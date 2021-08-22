@@ -18,16 +18,6 @@
                 @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "true" } })
                 @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group">
-                <label>Precio</label>
-                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "true" } })
-                @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                <label>Precio</label>
-                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "true" } })
-                @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
-            </div>
         </div>
         <div class="modal-footer">
             <input type="submit" value="Agregar" class="btn btn-success" onclick="AddData();" />

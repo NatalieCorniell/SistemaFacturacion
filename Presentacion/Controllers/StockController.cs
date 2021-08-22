@@ -16,6 +16,8 @@ namespace Presentacion.Controllers
     {
 
         readonly Stock stock = new Stock();
+        readonly Mercancia Mercancia = new Mercancia();
+
         // GET: producto
         public ActionResult Principal()
         {
@@ -35,17 +37,25 @@ namespace Presentacion.Controllers
         public ActionResult StockView()
         {
             var Lista = new List<Dto_Stock>();
+            TProducto productos = new TProducto();
+
             var model = stock.Listar();
             foreach (var item in model)
             {
-                Dto_Stock _Dto_Stock = new Dto_Stock
+                Dto_Stock Dto_Stock = new Dto_Stock
                 {
                     Id_Producto = (int)item.Id_Producto,
+                    Nombre_Producto = Mercancia.Listar().Find(x => x.Id_Producto == item.Id_Producto).Nombre,
                     Cantidad = (int)item.Cantidad
                 };
-                Lista.Add(_Dto_Stock);
+                Dto_Stock.TProductos = new List<SelectListItem>
+                {
+                    new SelectListItem() { Text = Dto_Stock.Nombre_Producto, Value = Dto_Stock.Id_Producto.ToString(), Selected = false }
+                };
+                Lista.Add(Dto_Stock);
             }
             return View(Lista);
+
         }
 
         [HttpPost]

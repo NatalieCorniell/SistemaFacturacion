@@ -10,3 +10,16 @@ C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.cspro
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.dll
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.pdb
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.csproj.AssemblyReference.cache
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.Helpers.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.Mvc.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.Razor.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.WebPages.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.Helpers.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.Mvc.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.Razor.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.WebPages.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\System.Web.WebPages.Razor.xml

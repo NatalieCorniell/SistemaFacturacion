@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace C_Datos.DTOS
 {
@@ -13,9 +14,9 @@ namespace C_Datos.DTOS
         [Required]
         public int Id_Producto { get; set; }
         [Required]
-        public int Nombre_Producto { get; set; }
+        public string Nombre_Producto { get; set; }
         [Required]
         public int Cantidad { get; set; }
-        public List<Dto_Stock> TProductos { get; set; }
+        public List<SelectListItem> TProductos { get; set; }
     }
 }
