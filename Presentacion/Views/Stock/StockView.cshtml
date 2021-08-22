@@ -36,8 +36,7 @@
                     <td>@Proveedor.Nombre_Proveedor</td>
                     <td>@Proveedor.Fecha.ToShortDateString()</td>
                     <td>
-                        @*   <a href="#editEmployeeModal" id="@Proveedor.Id_Producto" onclick="GetbyID(this.id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>*@
-                        <a href="#eliminarProveedor" id="@Proveedor.Id_Producto" onclick="GetbyDelID(this.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                        <a href="#eliminarProveedor" id="@Proveedor.Id_Stock" onclick="GetbyDelID(this.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                     </td>
                 </tr>
                 }
@@ -84,14 +83,6 @@
                 });
             $("#modal").modal("show");
         }
-        function EditData(model) {
-            $.post("@Url.Action("Editar", "Stock")/" + model,
-                function (data) {
-                    $('.modal-body').html(data);
-                });
-            $("#modal").modal("show");
-        }
-
         function Delete(ID) {
             $.post("@Url.Action("Eliminar", "Stock")/" + ID,
                 function (data) {

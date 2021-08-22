@@ -219,7 +219,6 @@
     <Content Include="Views\Mercancia\Partials\EliminarPartial.cshtml" />
     <Content Include="Views\Stock\StockView.cshtml" />
     <Content Include="Views\Stock\Partials\AgregarPartial.cshtml" />
-    <Content Include="Views\Stock\Partials\EditarPartial.cshtml" />
     <Content Include="Views\Stock\Partials\EliminarPartial.cshtml" />
     <Content Include="Views\Shared\NavBar.cshtml" />
     <Content Include="Views\Clientes\Partials\AgregarPartial.cshtml" />

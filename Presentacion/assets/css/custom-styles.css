@@ -586,7 +586,12 @@ div#sideNav:hover {
         padding-top: 4px;
     }
 
-.active-menu, .active-menu i {
+.active-menu, .active-menu {
+    width: 100% !important;
+}
+
+    .active-menu, .active-menu i
+{
     background-color: #233342 !important;
     color: #fff !important;
 }
@@ -640,11 +645,11 @@ div#sideNav:hover {
         padding: 8px;
         font-size: 14px;
     }
-
-    .sidebar-collapse > .nav > li {
-        border-bottom: 1px solid rgba(107, 108, 109, 0.08);
-        display: flex
-    }
+      
+        .sidebar-collapse > .nav > li {
+            border-bottom: 1px solid rgba(107, 108, 109, 0.08);
+            display: flex
+        }
 
 ul.nav.nav-second-level.collapse.in {
     background: #121821;

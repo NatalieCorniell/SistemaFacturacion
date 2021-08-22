@@ -17,13 +17,20 @@
         <ul class="nav" id="main-menu">
 
             <li>
-                <a class="active-menu waves-effect waves-dark" href="/"><i class="fa fa-dashboard"></i> Home</a>
+                <a class="active-menu waves-effect waves-dark titleNav" href="#"><i class="fa fa-dashboard"></i> Módulo Procesos</a>
+                <hr />
+            </li>
+            <hr />
+            <li>
+                <a href="#" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> @Html.ActionLink("Entrada de Mercancía", "StockView", "Stock")</a>
             </li>
             <li>
-                <a href="chart.html" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> @Html.ActionLink("Stock", "StockView", "Stock")</a>
+                <a href="#" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i> @Html.ActionLink("Facturación", "FacturacionView", "Facturacion")</a>
             </li>
+            <hr />
             <li>
-             @*   <a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i>@Html.ActionLink("Mercancía", "MercanciaView", "Mercancia")</a>*@
+                <a class="active-menu waves-effect waves-dark titleNav" href="#"><i class="fa fa-dashboard"></i> Módulo Consultas</a>
+                <hr />
             </li>
         </ul>
 

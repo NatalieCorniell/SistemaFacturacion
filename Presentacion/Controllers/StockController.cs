@@ -34,7 +34,8 @@ namespace Presentacion.Controllers
                     Cantidad = (int)item.Cantidad,
                     Nombre_Proveedor = item.Nombre_Proveedor,
                     Nombre_Producto = item.Nombre_Producto,
-                    Fecha = (DateTime)item.Fecha
+                    Fecha = (DateTime)item.Fecha,
+                    Id_Stock = item.Id_Stock
                 };
                 Lista.Add(Dto_Producto);
             }
@@ -44,9 +45,7 @@ namespace Presentacion.Controllers
         private List<Dto_Stock> Listado()
         {
             var Lista = new List<Dto_Stock>();
-            TProducto productos = new TProducto();
-            List<Dto_Stock> prod = new List<Dto_Stock>();
-
+           
             var model = stock.Listar();
             foreach (var item in model)
             {
@@ -57,7 +56,8 @@ namespace Presentacion.Controllers
                     Id_Proveedor = Prov.Listar().Find(x => x.Id_Proveedor == item.Id_Proveedor).Id_Proveedor,
                     Nombre_Proveedor = Prov.Listar().Find(x => x.Id_Proveedor == item.Id_Proveedor).Nombre,
                     Cantidad = (int)item.Cantidad,
-                    Fecha = (DateTime)item.Fecha
+                    Fecha = (DateTime)item.Fecha,
+                    Id_Stock = item.Id_Stock
                 };
                 Lista.Add(Dto_Stock);
             }
@@ -98,34 +98,7 @@ namespace Presentacion.Controllers
 
             return PartialView("../Stock/Partials/AgregarPartial");
         }
-        //public List<SelectListItem> DropdownList()
-        //{
-        //    List<SelectListItem> items = new List<SelectListItem>();
-        //    var list = Mercancia.Listar();
-        //    foreach (var item in list)
-        //    {
-        //        items.Add(new SelectListItem
-        //        {
-        //            Text = item.Nombre.ToString(),
-        //            Value = item.Id_Producto.ToString(),
-        //            Selected = false
-        //        });
-        //    }
-
-        //    return items;
-        //}
-        public ActionResult Editar(TStockProduct stockProducto)
-        {
-            var Cantidad = stockProducto.Cantidad;
-
-            if (Cantidad > 0)
-            {
-                stock.Editar(stockProducto);
-                return Principal();
-            }
-            return PartialView("../Stock/Partials/EditarPartial");
-        }
-
+    
         [HttpPost]
         public ActionResult Eliminar(int? id)
         {
@@ -136,17 +109,7 @@ namespace Presentacion.Controllers
             }
             return PartialView("../Stock/Partials/EliminarPartial");
         }
-        [HttpGet]
-        public ActionResult GetID(int? ID)
-        {
-            var lista = stock.Listar();
-            TStockProduct _TStockProduct = lista.ToList().Find(x => x.Id_Stock == ID);
-            if (_TStockProduct == null)
-            {
-                return HttpNotFound();
-            }
-            return PartialView("../Stock/Partials/EditarPartial", _TStockProduct);
-        }
+   
         [HttpGet]
         public ActionResult EliminarID(int? ID)
         {
@@ -157,10 +120,6 @@ namespace Presentacion.Controllers
                 return HttpNotFound();
             }
             return PartialView("../Stock/Partials/EliminarPartial", _TStockProduct);
-        }
-        public TProducto GetElement(List<TProducto> list, int index)
-        {
-            return list[index - 1];
         }
     }
 }

@@ -1,25 +1,27 @@
-﻿@*@model C_Datos.TStockProduct
+﻿@model C_Datos.TStockProduct
 
 
 <h3>¿Está seguro de que desea eliminar estos registros?</h3>
-<div class="display-label" style="display:none;">
-    @Html.DisplayNameFor(model => model.Id_Producto)
-</div>
-
 <div class="display-label ">
     <label style="font-family:'Bookman Old Style';">Nombre</label>
 </div>
 <div class="display-field">
-    @Html.DisplayFor(model => model.Nombre)
+    @Html.DisplayFor(model => model.Nombre_Producto)
 </div>
 <div class="display-label ">
-    <label style="font-family:'Bookman Old Style';">Precio</label>
+    <label style="font-family:'Bookman Old Style';">Cantidad</label>
 </div>
 <div class="display-field">
-    @Html.DisplayFor(model => model.Precio)
+    @Html.DisplayFor(model => model.Cantidad)
+</div>
+<div class="display-label ">
+    <label style="font-family:'Bookman Old Style';">Proveedor</label>
+</div>
+<div class="display-field">
+    @Html.DisplayFor(model => model.Nombre_Proveedor)
 </div>
 <p>
     <br />
-    <input type="submit" value="Eliminar" id="@Model.Id_Producto" onclick="Delete(this.id)" class="btn btn-danger" />
-</p>*@
+    <input type="submit" value="Eliminar" id="@Model.Id_Stock" onclick="Delete(this.id)" class="btn btn-danger" />
+</p>
 

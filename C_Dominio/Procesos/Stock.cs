@@ -1,4 +1,5 @@
 ﻿using C_Datos;
+using C_Datos.DTOS;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,14 +24,11 @@ namespace C_Dominio.Procesos
         }
         public void GuardarEntrada(TStockProduct model)
         {
-
-            foreach (var item in collection)
-            {
-
-            }
-            db.TEntradas.Add(model);
-            db.Entry(model).State = EntityState.Added;
+            var modelEntrada = db.TEntradas.Add(new TEntrada() { Id_Producto = model.Id_Producto, Id_Proveedor = model.Id_Proveedor, Cantidad = model.Cantidad, Fecha = (DateTime)model.Fecha });
+          
+            db.Entry(modelEntrada).State = EntityState.Added;
             db.SaveChanges();
+
         }
         /// <summary>
         /// Listar
@@ -57,6 +55,7 @@ namespace C_Dominio.Procesos
             {
                 producto.Cantidad += Element.Cantidad;
             }
+            GuardarEntrada(Element);
 
             using (var dbcontext = new SistemaFacturacionEntities())
             {
@@ -75,8 +74,8 @@ namespace C_Dominio.Procesos
         {
             using (SistemaFacturacionEntities Context = new SistemaFacturacionEntities())
             {
-                TStockProduct producto = new TStockProduct { Id_Producto = index };
-                Context.Entry(producto).State = EntityState.Deleted;
+                TStockProduct stock = new TStockProduct { Id_Stock = index };
+                Context.Entry(stock).State = EntityState.Deleted;
                 Context.SaveChanges();
             }
         }
