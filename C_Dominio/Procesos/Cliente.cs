@@ -41,6 +41,7 @@ namespace C_Dominio.Procesos
                 cliente.RNC = Element.RNC;
                 cliente.Telefono = Element.Telefono;
                 cliente.Correo = Element.Correo;
+                cliente.Categoria = Element.Categoria;
             }
 
             using (var dbcontext = new SistemaFacturacionEntities())

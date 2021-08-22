@@ -104,6 +104,8 @@ namespace Presentacion.Controllers.CRUD
         {
             var lista = _TCliente.Listar();
             TCliente cliente = lista.ToList().Find(x => x.Id_Cliente == ID);
+            ViewBag.Categorias = new SelectList(_TCliente.Categorias(), "Id_Categoria", "Categoria", "Id_Categoria");
+
             if (cliente == null)
             {
                 return HttpNotFound();
@@ -115,6 +117,7 @@ namespace Presentacion.Controllers.CRUD
         {
             var lista = _TCliente.Listar();
             TCliente cliente = lista.ToList().Find(x => x.Id_Cliente == ID);
+           
             if (cliente == null)
             {
                 return HttpNotFound();
