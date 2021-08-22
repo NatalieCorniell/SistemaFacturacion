@@ -23,6 +23,10 @@ namespace C_Dominio.Procesos
         {
             return db.TClientes.ToList();
         }
+        public List<TCategoria> Categorias()
+        {
+            return db.TCategorias.ToList();
+        }
         public void Editar(TCliente Element)
         {
             var cliente = new TCliente();

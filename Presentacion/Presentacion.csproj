@@ -221,17 +221,16 @@
     <Content Include="Views\Stock\Partials\AgregarPartial.cshtml" />
     <Content Include="Views\Stock\Partials\EliminarPartial.cshtml" />
     <Content Include="Views\Shared\NavBar.cshtml" />
-    <Content Include="Views\Clientes\Partials\AgregarPartial.cshtml" />
-    <Content Include="Views\Clientes\Partials\EditarPartial.cshtml" />
-    <Content Include="Views\Clientes\Partials\EliminarPartial.cshtml" />
-    <Content Include="Views\Clientes\ClienteView.cshtml" />
+    <Content Include="Views\Cliente\Partials\AgregarPartial.cshtml" />
+    <Content Include="Views\Cliente\Partials\EditarPartial.cshtml" />
+    <Content Include="Views\Cliente\Partials\EliminarPartial.cshtml" />
+    <Content Include="Views\Cliente\ClienteView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="assets\plugins\" />
     <Folder Include="Content\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Cliente\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

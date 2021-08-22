@@ -1,11 +1,5 @@
 ﻿@model C_Datos.DTOS.Dto_Cliente
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Agregar</title>
-</head>
-<body>
     @using (Html.BeginForm("Agregar", "Cliente", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.ValidationSummary(true)
@@ -13,7 +7,7 @@
 
         <form>
             <div class="modal-header">
-                <h4 class="modal-title">Agregar Proveedor</h4>
+                <h4 class="modal-title">Agregar Cliente</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body">
@@ -37,13 +31,23 @@
                     <label>Correo</label>
                     @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control", @type = "email", @required = "true" } })
                     @Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
-                </div>  
-              
+                </div>
+
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.Categoria, ViewBag.Categorias as SelectList, "Categoria", new { @class = "form-control" })
+                    @Html.HiddenFor(m => m.Id_Categoria)
+                </div>
             </div>
             <div class="modal-footer">
-                <input type="" value="Agregar" class="btn btn-success" onclick="AddData();" />
+                <input type="submit" value="Agregar" class="btn btn-success" onclick="AddData();" />
             </div>
         </form>
     }
-</body>
-</html>
+<script>
+    $(function () {
+        $("#Categoria").on("change", function () {
+            $("#Id_Categoria").val($(this).val());
+        });
+    });
+
+</script>

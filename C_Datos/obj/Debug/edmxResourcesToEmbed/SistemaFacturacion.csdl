@@ -20,6 +20,8 @@
     <Property Name="Telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id_Categoria" Type="Int32" />
+    <NavigationProperty Name="TCategoria" Relationship="SistemaFacturacionModel.FK_Categorias" FromRole="TCliente" ToRole="TCategoria" />
   </EntityType>
   <EntityType Name="TEntrada">
     <Key>
@@ -146,6 +148,11 @@
       <End Role="TProveedor" EntitySet="TProveedors" />
       <End Role="TStockProduct" EntitySet="TStockProducts" />
     </AssociationSet>
+    <EntitySet Name="TCategorias" EntityType="SistemaFacturacionModel.TCategoria" />
+    <AssociationSet Name="FK_Categorias" Association="SistemaFacturacionModel.FK_Categorias">
+      <End Role="TCategoria" EntitySet="TCategorias" />
+      <End Role="TCliente" EntitySet="TClientes" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -193,6 +200,26 @@
       </Principal>
       <Dependent Role="TStockProduct">
         <PropertyRef Name="Id_Proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TCategoria">
+    <Key>
+      <PropertyRef Name="Id_Categoria" />
+    </Key>
+    <Property Name="Id_Categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Categoria" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TClientes" Relationship="SistemaFacturacionModel.FK_Categorias" FromRole="TCategoria" ToRole="TCliente" />
+  </EntityType>
+  <Association Name="FK_Categorias">
+    <End Type="SistemaFacturacionModel.TCategoria" Role="TCategoria" Multiplicity="0..1" />
+    <End Type="SistemaFacturacionModel.TCliente" Role="TCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TCategoria">
+        <PropertyRef Name="Id_Categoria" />
+      </Principal>
+      <Dependent Role="TCliente">
+        <PropertyRef Name="Id_Categoria" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

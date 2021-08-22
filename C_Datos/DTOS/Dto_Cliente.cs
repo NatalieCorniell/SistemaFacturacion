@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace C_Datos.DTOS
 {
@@ -21,5 +22,9 @@ namespace C_Datos.DTOS
         public string Correo { get; set; }
         [Required]
         public string Categoria { get; set; }
+        [Required]
+        public string Id_Categoria { get; set; }
+        [Required]
+        public List<SelectListItem> Categorias { get; set; }
     }
 }

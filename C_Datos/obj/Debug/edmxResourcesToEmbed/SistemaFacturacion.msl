@@ -15,6 +15,7 @@
     <EntitySetMapping Name="TClientes">
       <EntityTypeMapping TypeName="SistemaFacturacionModel.TCliente">
         <MappingFragment StoreEntitySet="TCliente">
+          <ScalarProperty Name="Id_Categoria" ColumnName="Id_Categoria" />
           <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="RNC" ColumnName="RNC" />
@@ -103,6 +104,14 @@
           <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
           <ScalarProperty Name="Id_Stock" ColumnName="Id_Stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TCategorias">
+      <EntityTypeMapping TypeName="SistemaFacturacionModel.TCategoria">
+        <MappingFragment StoreEntitySet="TCategoria">
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Id_Categoria" ColumnName="Id_Categoria" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -13,7 +13,7 @@ namespace Presentacion.Controllers.CRUD
     {
 
         readonly Cliente _TCliente = new Cliente();
-        // GET: Proveedor
+        // GET: cliente
         public ActionResult Principal()
         {
             var Lista = new List<Dto_Cliente>();
@@ -54,19 +54,23 @@ namespace Presentacion.Controllers.CRUD
         }
 
         [HttpPost]
-        public ActionResult Agregar(TCliente proveedor)
+        public ActionResult Agregar(TCliente cliente)
         {
-            var Nombre = proveedor.Nombre;
-            var RNC = proveedor.RNC;
-            var Telefono = proveedor.Telefono;
-            var Correo = proveedor.Correo;
 
-            if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(RNC) && !string.IsNullOrEmpty(Telefono) && !string.IsNullOrEmpty(Correo))
+            ViewBag.Categorias = new SelectList(_TCliente.Categorias(), "Id_Categoria", "Categoria", "Id_Categoria");
+            var Nombre = cliente.Nombre;
+            var RNC = cliente.RNC;
+            var Telefono = cliente.Telefono;
+            var Correo = cliente.Correo;
+            var Categoria = cliente.Id_Categoria.ToString();
+
+            if (!string.IsNullOrEmpty(Nombre) && !string.IsNullOrEmpty(RNC) && !string.IsNullOrEmpty(Categoria) && !string.IsNullOrEmpty(Telefono) && !string.IsNullOrEmpty(Correo))
             {
-                _TCliente.Guardar(proveedor);
+                cliente.Categoria = _TCliente.Categorias().Find(x => x.Id_Categoria.ToString() == cliente.Categoria).Categoria;
+                _TCliente.Guardar(cliente);
                 return Principal();
             }
-            return PartialView("../Clientes/Partials/AgregarPartial");
+            return PartialView("../Cliente/Partials/AgregarPartial");
         }
         public ActionResult Editar(TCliente cliente)
         {
@@ -82,7 +86,7 @@ namespace Presentacion.Controllers.CRUD
                 _TCliente.Editar(cliente);
                 return Principal();
             }
-            return PartialView("../Clientes/Partials/EditarPartial");
+            return PartialView("../Cliente/Partials/EditarPartial");
         }
 
         [HttpPost]
@@ -93,7 +97,7 @@ namespace Presentacion.Controllers.CRUD
                 _TCliente.Eliminar((int)id);
                 return Principal();
             }
-            return RedirectToAction("../Clientes/Partials/EliminarPartial");
+            return RedirectToAction("../Cliente/Partials/EliminarPartial");
         }
         [HttpGet]
         public ActionResult GetID(int? ID)
@@ -104,7 +108,7 @@ namespace Presentacion.Controllers.CRUD
             {
                 return HttpNotFound();
             }
-            return PartialView("../Clientes/Partials/EditarPartial", cliente);
+            return PartialView("../Cliente/Partials/EditarPartial", cliente);
         }
         [HttpGet]
         public ActionResult EliminarID(int? ID)
@@ -115,7 +119,7 @@ namespace Presentacion.Controllers.CRUD
             {
                 return HttpNotFound();
             }
-            return PartialView("../Clientes/Partials/EliminarPartial", cliente);
+            return PartialView("../Cliente/Partials/EliminarPartial", cliente);
         }
     }
 }

@@ -15,6 +15,13 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TCategoria">
+          <Key>
+            <PropertyRef Name="Id_Categoria" />
+          </Key>
+          <Property Name="Id_Categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
         <EntityType Name="TCliente">
           <Key>
             <PropertyRef Name="Id_Cliente" />
@@ -25,6 +32,7 @@
           <Property Name="Telefono" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Categoria" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id_Categoria" Type="int" />
         </EntityType>
         <EntityType Name="TEntradas">
           <Key>
@@ -79,6 +87,18 @@
           <Property Name="Id_Proveedor" Type="int" />
           <Property Name="Fecha" Type="date" />
         </EntityType>
+        <Association Name="FK_Categorias">
+          <End Role="TCategoria" Type="Self.TCategoria" Multiplicity="0..1" />
+          <End Role="TCliente" Type="Self.TCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCategoria">
+              <PropertyRef Name="Id_Categoria" />
+            </Principal>
+            <Dependent Role="TCliente">
+              <PropertyRef Name="Id_Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StockProd">
           <End Role="TProducto" Type="Self.TProducto" Multiplicity="0..1" />
           <End Role="TStockProducts" Type="Self.TStockProducts" Multiplicity="*" />
@@ -160,12 +180,17 @@
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SistemaFacturacionModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TCategoria" EntityType="Self.TCategoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TCliente" EntityType="Self.TCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEntradas" EntityType="Self.TEntradas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TFacturacion" EntityType="Self.TFacturacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TProducto" EntityType="Self.TProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TProveedor" EntityType="Self.TProveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TStockProducts" EntityType="Self.TStockProducts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Categorias" Association="Self.FK_Categorias">
+            <End Role="TCategoria" EntitySet="TCategoria" />
+            <End Role="TCliente" EntitySet="TCliente" />
+          </AssociationSet>
           <AssociationSet Name="FK_StockProd" Association="Self.FK_StockProd">
             <End Role="TProducto" EntitySet="TProducto" />
             <End Role="TStockProducts" EntitySet="TStockProducts" />
@@ -207,6 +232,8 @@
           <Property Name="Telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Categoria" Type="Int32" />
+          <NavigationProperty Name="TCategoria" Relationship="SistemaFacturacionModel.FK_Categorias" FromRole="TCliente" ToRole="TCategoria" />
         </EntityType>
         <EntityType Name="TEntrada">
           <Key>
@@ -333,6 +360,11 @@
             <End Role="TProveedor" EntitySet="TProveedors" />
             <End Role="TStockProduct" EntitySet="TStockProducts" />
           </AssociationSet>
+          <EntitySet Name="TCategorias" EntityType="SistemaFacturacionModel.TCategoria" />
+          <AssociationSet Name="FK_Categorias" Association="SistemaFacturacionModel.FK_Categorias">
+            <End Role="TCategoria" EntitySet="TCategorias" />
+            <End Role="TCliente" EntitySet="TClientes" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -383,6 +415,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TCategoria">
+          <Key>
+            <PropertyRef Name="Id_Categoria" />
+          </Key>
+          <Property Name="Id_Categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Categoria" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TClientes" Relationship="SistemaFacturacionModel.FK_Categorias" FromRole="TCategoria" ToRole="TCliente" />
+        </EntityType>
+        <Association Name="FK_Categorias">
+          <End Type="SistemaFacturacionModel.TCategoria" Role="TCategoria" Multiplicity="0..1" />
+          <End Type="SistemaFacturacionModel.TCliente" Role="TCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCategoria">
+              <PropertyRef Name="Id_Categoria" />
+            </Principal>
+            <Dependent Role="TCliente">
+              <PropertyRef Name="Id_Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -403,6 +455,7 @@
           <EntitySetMapping Name="TClientes">
             <EntityTypeMapping TypeName="SistemaFacturacionModel.TCliente">
               <MappingFragment StoreEntitySet="TCliente">
+                <ScalarProperty Name="Id_Categoria" ColumnName="Id_Categoria" />
                 <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="RNC" ColumnName="RNC" />
@@ -491,6 +544,14 @@
                 <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Id_Stock" ColumnName="Id_Stock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TCategorias">
+            <EntityTypeMapping TypeName="SistemaFacturacionModel.TCategoria">
+              <MappingFragment StoreEntitySet="TCategoria">
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Id_Categoria" ColumnName="Id_Categoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

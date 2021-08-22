@@ -12,16 +12,18 @@ namespace C_Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class TCliente
+    public partial class TCategoria
     {
-        public int Id_Cliente { get; set; }
-        public string Nombre { get; set; }
-        public string RNC { get; set; }
-        public string Telefono { get; set; }
-        public string Correo { get; set; }
-        public string Categoria { get; set; }
-        public Nullable<int> Id_Categoria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TCategoria()
+        {
+            this.TClientes = new HashSet<TCliente>();
+        }
     
-        public virtual TCategoria TCategoria { get; set; }
+        public int Id_Categoria { get; set; }
+        public string Categoria { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TCliente> TClientes { get; set; }
     }
 }

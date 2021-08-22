@@ -101,6 +101,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>SistemaFacturacion.tt</DependentUpon>
     </Compile>
+    <Compile Include="TCategoria.cs">
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
     <Compile Include="TCliente.cs">
       <DependentUpon>SistemaFacturacion.tt</DependentUpon>
     </Compile>
