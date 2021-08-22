@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Procesos\Cliente.cs" />
     <Compile Include="Procesos\Mercancia.cs" />
     <Compile Include="Procesos\Stock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

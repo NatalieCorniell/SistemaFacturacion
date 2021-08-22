@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOS\Dto_Cliente.cs" />
     <Compile Include="DTOS\Dto_Producto.cs" />
     <Compile Include="DTOS\Dto_Proveedor.cs" />
     <Compile Include="DTOS\Dto_Stock.cs" />
@@ -69,6 +70,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaFacturacion.edmx</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>SistemaFacturacion.tt</DependentUpon>
     </Compile>
@@ -85,6 +92,9 @@
       <DependentUpon>SistemaFacturacion.tt</DependentUpon>
     </Compile>
     <Compile Include="TProveedor.cs">
+      <DependentUpon>SistemaFacturacion.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TStockProduct.cs">
       <DependentUpon>SistemaFacturacion.tt</DependentUpon>
     </Compile>
   </ItemGroup>

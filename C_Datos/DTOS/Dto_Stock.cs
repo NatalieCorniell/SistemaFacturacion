@@ -16,5 +16,6 @@ namespace C_Datos.DTOS
         public int Nombre_Producto { get; set; }
         [Required]
         public int Cantidad { get; set; }
+        public List<Dto_Stock> TProductos { get; set; }
     }
 }

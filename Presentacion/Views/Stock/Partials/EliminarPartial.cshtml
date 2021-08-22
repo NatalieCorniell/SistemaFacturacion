@@ -1,6 +1,6 @@
-﻿@model C_Datos.TProducto
+﻿@*@model C_Datos.TStockProduct
 
-<!-- Delete Modal HTML -->
+
 <h3>¿Está seguro de que desea eliminar estos registros?</h3>
 <div class="display-label" style="display:none;">
     @Html.DisplayNameFor(model => model.Id_Producto)
@@ -20,7 +20,6 @@
 </div>
 <p>
     <br />
-    @*@Html.HiddenFor(model => model.Id_Producto)*@
     <input type="submit" value="Eliminar" id="@Model.Id_Producto" onclick="Delete(this.id)" class="btn btn-danger" />
-</p>
+</p>*@
 

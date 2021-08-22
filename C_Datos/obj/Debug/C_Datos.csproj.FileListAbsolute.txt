@@ -5,8 +5,8 @@ C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\EntityFramewo
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\EntityFramework.xml
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.csproj.AssemblyReference.cache
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.csproj.CoreCompileInputs.cache
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.csproj.CopyComplete
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.dll
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.pdb
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.csproj.AssemblyReference.cache

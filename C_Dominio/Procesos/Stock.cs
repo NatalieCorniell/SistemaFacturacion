@@ -13,9 +13,9 @@ namespace C_Dominio.Procesos
 
         readonly SistemaFacturacionEntities db = new SistemaFacturacionEntities();
 
-        public void Guardar(TStocks model)
+        public void Guardar(TStockProduct model)
         {
-            db.TProductoes.Add(model);
+            db.TStockProducts.Add(model);
             db.Entry(model).State = EntityState.Added;
             db.SaveChanges();
         }
@@ -23,27 +23,27 @@ namespace C_Dominio.Procesos
         /// Listar
         /// </summary>
         /// <returns></returns>
-        public List<TProducto> Listar()
+        public List<TStockProduct> Listar()
         {
-            return db.TProductoes.ToList();
+            return db.TStockProducts.ToList();
         }
         /// <summary>
         /// Editar
         /// </summary>
         /// <param name="index"></param>
         /// <param name="Element"></param>
-        public void Editar(TProducto Element)
+        public void Editar(TStockProduct Element)
         {
-            var producto = new TProducto();
+            var producto = new TStockProduct();
             using (var context = new SistemaFacturacionEntities())
             {
-                producto = (context.TProductoes.Where(a => a.Id_Producto == Element.Id_Producto)).SingleOrDefault();
+                producto = (context.TStockProducts.Where(a => a.Id_Stock == Element.Id_Stock)).SingleOrDefault();
             }
 
             if (producto != null)
             {
-                producto.Nombre = Element.Nombre;
-                producto.Precio = Element.Precio;
+                producto.Id_Producto = Element.Id_Producto;
+                producto.Cantidad = Element.Cantidad;
             }
 
             using (var dbcontext = new SistemaFacturacionEntities())
@@ -63,7 +63,7 @@ namespace C_Dominio.Procesos
         {
             using (SistemaFacturacionEntities Context = new SistemaFacturacionEntities())
             {
-                TProducto producto = new TProducto { Id_Producto = index };
+                TStockProduct producto = new TStockProduct { Id_Producto = index };
                 Context.Entry(producto).State = EntityState.Deleted;
                 Context.SaveChanges();
             }
@@ -74,7 +74,7 @@ namespace C_Dominio.Procesos
         /// <param name="list"></param>
         /// <param name="index"></param>
         /// <returns></returns>
-        public TProducto GetElement(List<TProducto> list, int index)
+        public TStockProduct GetElement(List<TStockProduct> list, int index)
         {
             return list[index];
         }

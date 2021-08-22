@@ -23,7 +23,6 @@
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th> </th>
-                    <th>Stock</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,10 +35,6 @@
                         <td>
                             <a href="#editEmployeeModal" id="@Proveedor.Id_Producto" onclick="GetbyID(this.id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
                             <a href="#eliminarProveedor" id="@Proveedor.Id_Producto" onclick="GetbyDelID(this.id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                        </td>
-                        <td>
-                            <a href="#AgregarAStock" id="@Proveedor.Id_Producto" onclick="" class="add" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Agregar">&#xE147;</i></a>
-                            <a href="#AgregarAStock" id="@Proveedor.Id_Producto" onclick="" class="warning" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Quitar">&#xe14c;</i></a>
                         </td>
                     </tr>
                 }
@@ -63,7 +58,7 @@
 </div>
 @helper Pagination()
 {
-    <div class="clearfix">
+    @*<div class="clearfix">
         <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
         <ul class="pagination">
             <li class="page-item disabled"><a href="#">Previous</a></li>
@@ -74,7 +69,7 @@
             <li class="page-item"><a href="#" class="page-link">5</a></li>
             <li class="page-item"><a href="#" class="page-link">Next</a></li>
         </ul>
-    </div>}
+    </div>*@}
 
 
 @section scripts{

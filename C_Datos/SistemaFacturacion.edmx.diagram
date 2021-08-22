@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="45fb26c57c834f37838ac429fc2c92c1" Name="Diagram1">
+      <Diagram DiagramId="86d10236b8824d3dad7ab271f519446c" Name="Diagram1">
         <EntityTypeShape EntityType="SistemaFacturacionModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaFacturacionModel.TCliente" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaFacturacionModel.TEntrada" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
@@ -13,6 +13,8 @@
         <EntityTypeShape EntityType="SistemaFacturacionModel.TProveedor" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="SistemaFacturacionModel.FK_StockProducto" ManuallyRouted="false" />
         <AssociationConnector Association="SistemaFacturacionModel.FK_StockProveedor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SistemaFacturacionModel.TStockProduct" Width="1.5" PointX="3" PointY="8.375" />
+        <AssociationConnector Association="SistemaFacturacionModel.FK_StockProd" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -67,6 +67,26 @@
           <Property Name="Telefono" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="Correo" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="TStockProducts">
+          <Key>
+            <PropertyRef Name="Id_Stock" />
+          </Key>
+          <Property Name="Id_Stock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Id_Producto" Type="int" />
+        </EntityType>
+        <Association Name="FK_StockProd">
+          <End Role="TProducto" Type="Self.TProducto" Multiplicity="0..1" />
+          <End Role="TStockProducts" Type="Self.TStockProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TProducto">
+              <PropertyRef Name="Id_Producto" />
+            </Principal>
+            <Dependent Role="TStockProducts">
+              <PropertyRef Name="Id_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StockProducto">
           <End Role="TProducto" Type="Self.TProducto" Multiplicity="0..1" />
           <End Role="TEntradas" Type="Self.TEntradas" Multiplicity="*" />
@@ -91,6 +111,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SistemaFacturacionModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TCliente" EntityType="Self.TCliente" Schema="dbo" store:Type="Tables" />
@@ -98,6 +149,11 @@
           <EntitySet Name="TFacturacion" EntityType="Self.TFacturacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TProducto" EntityType="Self.TProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TProveedor" EntityType="Self.TProveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TStockProducts" EntityType="Self.TStockProducts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_StockProd" Association="Self.FK_StockProd">
+            <End Role="TProducto" EntitySet="TProducto" />
+            <End Role="TStockProducts" EntitySet="TStockProducts" />
+          </AssociationSet>
           <AssociationSet Name="FK_StockProducto" Association="Self.FK_StockProducto">
             <End Role="TProducto" EntitySet="TProducto" />
             <End Role="TEntradas" EntitySet="TEntradas" />
@@ -165,6 +221,7 @@
           <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Precio" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TEntradas" Relationship="Self.FK_StockProducto" FromRole="TProducto" ToRole="TEntradas" />
+          <NavigationProperty Name="TStockProducts" Relationship="SistemaFacturacionModel.FK_StockProd" FromRole="TProducto" ToRole="TStockProduct" />
         </EntityType>
         <EntityType Name="TProveedor">
           <Key>
@@ -216,7 +273,74 @@
             <End Role="TProveedor" EntitySet="TProveedors" />
             <End Role="TEntradas" EntitySet="TEntradas" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SistemaFacturacionModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SistemaFacturacionModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="TStockProducts" EntityType="SistemaFacturacionModel.TStockProduct" />
+          <AssociationSet Name="FK_StockProd" Association="SistemaFacturacionModel.FK_StockProd">
+            <End Role="TProducto" EntitySet="TProductoes" />
+            <End Role="TStockProduct" EntitySet="TStockProducts" />
+          </AssociationSet>
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="TStockProduct">
+          <Key>
+            <PropertyRef Name="Id_Stock" />
+          </Key>
+          <Property Name="Id_Stock" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Id_Producto" Type="Int32" />
+          <NavigationProperty Name="TProducto" Relationship="SistemaFacturacionModel.FK_StockProd" FromRole="TStockProduct" ToRole="TProducto" />
+        </EntityType>
+        <Association Name="FK_StockProd">
+          <End Type="SistemaFacturacionModel.TProducto" Role="TProducto" Multiplicity="0..1" />
+          <End Type="SistemaFacturacionModel.TStockProduct" Role="TStockProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TProducto">
+              <PropertyRef Name="Id_Producto" />
+            </Principal>
+            <Dependent Role="TStockProduct">
+              <PropertyRef Name="Id_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -288,6 +412,39 @@
                 <ScalarProperty Name="RNC" ColumnName="RNC" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SistemaFacturacionModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SistemaFacturacionModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SistemaFacturacionModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SistemaFacturacionModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SistemaFacturacionModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SistemaFacturacionModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SistemaFacturacionModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SistemaFacturacionModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SistemaFacturacionModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="TStockProducts">
+            <EntityTypeMapping TypeName="SistemaFacturacionModel.TStockProduct">
+              <MappingFragment StoreEntitySet="TStockProducts">
+                <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Id_Stock" ColumnName="Id_Stock" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

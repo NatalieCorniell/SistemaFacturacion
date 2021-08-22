@@ -54,6 +54,7 @@
     <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Precio" Type="Int32" Nullable="false" />
     <NavigationProperty Name="TEntradas" Relationship="Self.FK_StockProducto" FromRole="TProducto" ToRole="TEntradas" />
+    <NavigationProperty Name="TStockProducts" Relationship="SistemaFacturacionModel.FK_StockProd" FromRole="TProducto" ToRole="TStockProduct" />
   </EntityType>
   <EntityType Name="TProveedor">
     <Key>
@@ -135,6 +136,11 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="TStockProducts" EntityType="SistemaFacturacionModel.TStockProduct" />
+    <AssociationSet Name="FK_StockProd" Association="SistemaFacturacionModel.FK_StockProd">
+      <End Role="TProducto" EntitySet="TProductoes" />
+      <End Role="TStockProduct" EntitySet="TStockProducts" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -147,4 +153,25 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <EntityType Name="TStockProduct">
+    <Key>
+      <PropertyRef Name="Id_Stock" />
+    </Key>
+    <Property Name="Id_Stock" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Id_Producto" Type="Int32" />
+    <NavigationProperty Name="TProducto" Relationship="SistemaFacturacionModel.FK_StockProd" FromRole="TStockProduct" ToRole="TProducto" />
+  </EntityType>
+  <Association Name="FK_StockProd">
+    <End Type="SistemaFacturacionModel.TProducto" Role="TProducto" Multiplicity="0..1" />
+    <End Type="SistemaFacturacionModel.TStockProduct" Role="TStockProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TProducto">
+        <PropertyRef Name="Id_Producto" />
+      </Principal>
+      <Dependent Role="TStockProduct">
+        <PropertyRef Name="Id_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

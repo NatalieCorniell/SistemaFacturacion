@@ -13,19 +13,12 @@
                 </div>
                 <div class="col-sm-6">
                     <a href="#agregarProveedor" class="btn btn-success" data-toggle="modal" onclick="AddData();"><i class="material-icons">&#xE147;</i> <span></span></a>
-                  @*  <a href="#eliminarProveedor" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span></span></a>*@
                 </div>
             </div>
         </div>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    @*<th>
-                        <span class="custom-checkbox">
-                            <input type="checkbox" id="selectAll">
-                            <label for="selectAll"></label>
-                        </span>
-                    </th>*@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>RNC/Cedula</th>
@@ -37,12 +30,6 @@
                 @foreach (var Proveedor in Model.ToList())
                 {
                     <tr>
-                        @*<td>
-                            <span class="custom-checkbox">
-                                <input type="checkbox" id="checkbox-@Proveedor.Id_Proveedor" name="options[]" value="@Proveedor.Id_Proveedor">
-                                <label for="checkbox-@Proveedor.Id_Proveedor"></label>
-                            </span>
-                        </td>*@
                         <td>@Proveedor.Id_Proveedor</td>
                         <td>@Proveedor.Nombre</td>
                         <td>@Proveedor.RNC</td>
@@ -74,7 +61,7 @@
     </div>
 @helper Pagination()
 {
-    <div class="clearfix">
+    @*<div class="clearfix">
         <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
         <ul class="pagination">
             <li class="page-item disabled"><a href="#">Previous</a></li>
@@ -85,7 +72,7 @@
             <li class="page-item"><a href="#" class="page-link">5</a></li>
             <li class="page-item"><a href="#" class="page-link">Next</a></li>
         </ul>
-    </div>}
+    </div>*@}
 
 
 @section scripts{
@@ -110,7 +97,7 @@
                 function (data) {
                    $('.modal-body').html(data);
                 });
-            $("#modal").modal("show");
+            $("#modal").modal("hide");
         }
         //Taking by ID
           function GetbyID(ID) {

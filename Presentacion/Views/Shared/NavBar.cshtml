@@ -1,0 +1,32 @@
+﻿
+<nav class="navbar navbar-default top-navbar" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand waves-effect waves-dark" href="index.html"><i class="large material-icons">track_changes</i> <strong>Sistema de Facturacion</strong></a>
+    </div>
+</nav>
+
+<!--/. NAV TOP  -->
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+
+            <li>
+                <a class="active-menu waves-effect waves-dark" href="/"><i class="fa fa-dashboard"></i> Home</a>
+            </li>
+            <li>
+                <a href="chart.html" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i> @Html.ActionLink("Stock", "StockView", "Stock")</a>
+            </li>
+            <li>
+             @*   <a href="tab-panel.html" class="waves-effect waves-dark"><i class="fa fa-qrcode"></i>@Html.ActionLink("Mercancía", "MercanciaView", "Mercancia")</a>*@
+            </li>
+        </ul>
+
+    </div>
+
+</nav>
