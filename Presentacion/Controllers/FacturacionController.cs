@@ -17,43 +17,21 @@ namespace Presentacion.Controllers
         readonly Stock stock = new Stock();
         readonly Mercancia Mercancia = new Mercancia();
 
-
-        // GET: producto
-        //public ActionResult Principal()
-        //{
-        //    Factura.RefreshDB();
-        //    var Lista = new List<Dto_Factura>();
-        //    var model = Factura.Listar();
-        //    foreach (var item in model)
-        //    {
-        //        Dto_Factura Dto_Producto = new Dto_Factura
-        //        {
-        //            Id_Producto = (int)item.Id_Producto,
-        //            Cantidad = (int)item.Cantidad,
-        //            Nombre_Proveedor = item.Nombre_Proveedor,
-        //            Nombre_Producto = item.Nombre_Producto,
-        //            Fecha = (DateTime)item.Fecha,
-        //            Id_Factura = item.Id_Factura
-        //        };
-        //        Lista.Add(Dto_Producto);
-        //    }
-        //    return View("FacturaView", Lista);
-        //}
         [HttpPost]
         public ActionResult AgregarProducto(int? idProducto)
         {
-            var productos = Mercancia.Listar();
-            var listaDeProductos = new List<Dto_Producto>();
-            foreach (var Prod in productos)
-            {
-                Dto_Producto dto_Producto = new Dto_Producto
-                {
-                    Id_Producto = productos.Find(x => x.Id_Producto == idProducto).Id_Producto,
-                    Nombre = productos.Find(x => x.Id_Producto == idProducto).Nombre,
-                    Precio = productos.Find(x => x.Id_Producto == idProducto).Precio
-                };
-                listaDeProductos.Add(dto_Producto);
-            }
+            //var productos = Mercancia.Listar();
+            //var listaDeProductos = new List<Dto_Producto>();
+            //foreach (var Prod in productos)
+            //{
+            //    Dto_Producto dto_Producto = new Dto_Producto
+            //    {
+            //        Id_Producto = productos.Find(x => x.Id_Producto == idProducto).Id_Producto,
+            //        Nombre = productos.Find(x => x.Id_Producto == idProducto).Nombre,
+            //        Precio = productos.Find(x => x.Id_Producto == idProducto).Precio
+            //    };
+            //    listaDeProductos.Add(dto_Producto);
+            //}
             return View();
 
         }
@@ -135,27 +113,6 @@ namespace Presentacion.Controllers
         //    return PartialView("../Factura/Partials/AgregarPartial");
         //}
 
-        //[HttpPost]
-        //public ActionResult Eliminar(int? id)
-        //{
-        //    if (id > 0)
-        //    {
-        //        Factura.Eliminar((int)id);
-        //        return Principal();
-        //    }
-        //    return PartialView("../Factura/Partials/EliminarPartial");
-        //}
-
-        //[HttpGet]
-        //public ActionResult EliminarID(int? ID)
-        //{
-        //    var lista = Factura.Listar();
-        //    TFacturaProduct _TFacturaProduct = lista.ToList().Find(x => x.Id_Factura == ID);
-        //    if (_TFacturaProduct == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return PartialView("../Factura/Partials/EliminarPartial", _TFacturaProduct);
-        //}
+   
     }
 }

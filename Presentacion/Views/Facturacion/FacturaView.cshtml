@@ -28,7 +28,7 @@
                 <label class="editor-label">Seleccione el Producto</label>
                 @Html.DropDownListFor(model => model.Nombre_Producto, ViewBag.Productos as SelectList, "Productos", new { @class = "form-control" })
                 @Html.HiddenFor(m => m.Id_Producto)
-                @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "true" } })
+                @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control form-control-cantidad", @type = "number", @required = "true" , @placeholder = "Cantidad"} })
                 @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
                 <input type="number" name="Cantidad" value="" id="Nombre_Producto_val" />
             </div>
@@ -47,7 +47,7 @@
         $("#Nombre_Producto").on("change", function () {
             producto = $("#Id_Producto").val($(this).val());
             //
-            var _Id_Producto = document.getElementById("Id_Producto");
+            @*var _Id_Producto = document.getElementById("Id_Producto");
             var _Cantidad = document.getElementById("Cantidad");
             debugger
             var valueProducto = _Id_Producto.value;
@@ -60,7 +60,7 @@
             $.post("@Url.Action("AgregarProducto", "Facturacion")/" + idProducto,
                 function (data) {
                    $('.modal-body').html(data);
-                });
+                });*@
 
         });
 
@@ -73,9 +73,5 @@
         document.getElementById("Nombre_Producto_val").val = selected;
     }
 
-    function myfunction() {
-        //
-
-    }
 </script>
 <script src="~/assets/js/Shop.js"></script>

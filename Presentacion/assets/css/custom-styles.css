@@ -28,7 +28,13 @@ body {
     width: 100%;
     background-color: #000a19 !important
 }
-
+input.form-control-cantidad {
+    background-color: beige !important;
+    color: #000 !important;
+}
+    input.form-control-cantidad::placeholder {
+        color: #494646 !important;
+    }
 #page-wrapper {
     padding: 15px 15px;
     min-height: 600px;
