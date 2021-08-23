@@ -1,0 +1,166 @@
+﻿body {
+    background: #efefef;
+    font-family: "Roboto", sans-serif;
+}
+
+.header {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    height: 130px;
+    background: linear-gradient(rgba(199, 204, 100, 0.35), rgba(199, 204, 100, 0.35)), url("../img/header-factura.jfif");
+    background-size: cover;
+    position: relative;
+}
+
+    .header h1 {
+        margin: 0;
+        color: #fff;
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+.form-control {
+    background-color: #70763c !important;
+    color: #fff !important;
+}
+.editor-label {
+    color: #ffb13c !important;
+}
+.container-chart {
+    padding: 20px 20px;
+}
+
+h1 {
+    font-weight: 500;
+    text-align: center;
+}
+
+.card {
+    width: 300px;
+    margin: 50px auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.price {
+    right: 30px;
+    top: 0;
+    position: absolute;
+}
+
+h3 {
+    font-weight: 400;
+    margin: 0;
+    padding: 10px;
+}
+
+#total-price {
+    right: 30px;
+    top: 10px;
+    position: absolute;
+    padding: 10px;
+}
+
+.footer {
+    position: relative;
+    padding: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+}
+
+    ul li {
+        position: relative;
+    }
+
+        ul li:last-child label {
+            margin-bottom: 0;
+        }
+
+.control {
+    font-size: 18px;
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    padding-left: 30px;
+    cursor: pointer;
+}
+
+    .control input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+
+.control__indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #e6e6e6;
+}
+
+/* Checked state */
+.control input:checked ~ .control__indicator {
+    background: #32CD32;
+}
+
+/* Hover state whilst checked */
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+    background: #32CD32;
+}
+
+/* Disabled state */
+.control input:disabled ~ .control__indicator {
+    pointer-events: none;
+    opacity: 0.6;
+    background: #e6e6e6;
+}
+
+/* Check mark */
+.control__indicator:after {
+    position: absolute;
+    display: none;
+    content: "";
+}
+
+/* Show check mark */
+.control input:checked ~ .control__indicator:after {
+    display: block;
+}
+
+/* Checkbox tick */
+.control--checkbox .control__indicator:after {
+    top: 4px;
+    left: 8px;
+    width: 3px;
+    height: 8px;
+    transform: rotate(45deg);
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+}
+
+/* Disabled tick colour */
+.control--checkbox input:disabled ~ .control__indicator:after {
+    border-color: #7b7b7b;
+}
+
+.inputArea {
+    top: 20px;
+    left: 20px;
+}
+
+.removeBtn {
+    cursor: pointer;
+    border: none;
+    margin-left: 0.5rem;
+}

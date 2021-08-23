@@ -1,0 +1,46 @@
+﻿@model C_Datos.DTOS.Dto_Factura
+@{
+    Layout = "~/Views/Shared/MasterShop.cshtml";
+}
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500,700" rel="stylesheet">
+<div class="card">
+    <div class="header">
+        <h1>Productos</h1>
+    </div>
+    <div class="container-chart">
+        <ul id="cart">
+        </ul>
+    </div>
+    <div class="footer">
+        <h3>Total:</h3>
+        <span id="total-price"></span>
+    </div>
+</div>
+<div class="inputArea">
+    @using (Html.BeginForm("Comprar", "Facturacion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="editor-label">Seleccione el Producto</label>
+            @Html.DropDownListFor(model => model.Nombre_Producto, ViewBag.Productos as SelectList, "Productos", new { @class = "form-control" })
+            @Html.HiddenFor(m => m.Id_Producto)
+        </div>
+    </div>
+        <div class="modal-footer">
+            <input type="submit" value="Finalizar Compra" class="btn btn-danger" onclick="AddData();" />
+        </div>
+    }
+        <button onclick="addToCart()" class="btn btn-success">Agregar Producto</button>
+</div>
+<script>
+    $(function () {
+        $("#Nombre_Producto").on("change", function () {
+            $("#Id_Producto").val($(this).val());
+        });
+    });
+    //
+</script>
+<script src="~/assets/js/Shop.js"></script>

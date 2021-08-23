@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CRUD\ClienteController.cs" />
+    <Compile Include="Controllers\FacturacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CRUD\MercanciaController.cs" />
     <Compile Include="Controllers\CRUD\ProveedoresController.cs" />
@@ -143,10 +144,15 @@
     <Content Include="assets\css\font-awesome.css" />
     <Content Include="assets\css\materialize.min.css" />
     <Content Include="assets\css\Productos.css" />
+    <Content Include="assets\css\Shop.css" />
     <Content Include="assets\font-awesome\fonts\fontawesome-webfontba72.svg" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\img\bg-img.jpg" />
+    <Content Include="assets\img\header-factura.jfif" />
+    <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\crud.js" />
+    <Content Include="assets\js\custom-scripts.js" />
+    <Content Include="assets\js\Shop.js" />
     <Content Include="assets\materialize\css\materialize.css" />
     <Content Include="assets\materialize\css\materialize.min.css" />
     <Content Include="assets\materialize\js\materialize.js" />
@@ -225,6 +231,10 @@
     <Content Include="Views\Cliente\Partials\EditarPartial.cshtml" />
     <Content Include="Views\Cliente\ClienteView.cshtml" />
     <Content Include="Views\Cliente\Partials\Eliminar.cshtml" />
+    <Content Include="Views\Facturacion\Partials\AgregarPartial.cshtml" />
+    <Content Include="Views\Facturacion\Partials\EliminarPartial.cshtml" />
+    <Content Include="Views\Facturacion\FacturaView.cshtml" />
+    <Content Include="Views\Shared\MasterShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

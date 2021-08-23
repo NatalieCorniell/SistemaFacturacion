@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="DTOS\Dto_Cliente.cs" />
     <Compile Include="DTOS\Dto_Entrada.cs" />
+    <Compile Include="DTOS\Dto_Factura.cs" />
     <Compile Include="DTOS\Dto_Producto.cs" />
     <Compile Include="DTOS\Dto_Proveedor.cs" />
     <Compile Include="DTOS\Dto_Stock.cs" />

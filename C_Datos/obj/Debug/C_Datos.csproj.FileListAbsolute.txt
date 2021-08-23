@@ -22,3 +22,4 @@ C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.cspro
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.csproj.CopyComplete
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.dll
 C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.pdb
+C:\Users\corni\source\repos\ITLA\Sis-Facturacion\C_Datos\obj\Debug\C_Datos.csproj.AssemblyReference.cache

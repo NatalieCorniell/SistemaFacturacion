@@ -1,0 +1,45 @@
+﻿@model C_Datos.DTOS.Dto_Stock
+@using (Html.BeginForm("Agregar", "Stock", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <form>
+        <div class="modal-header">
+            <h4 class="modal-title">Agregar Producto</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="editor-label">Seleccione el producto</label>
+                @Html.DropDownListFor(model => model.Nombre_Producto, ViewBag.Products as SelectList, "Productos Disponibles", new { @class = "form-control" })
+                @Html.HiddenFor(m => m.Id_Producto)
+            </div>
+            <div class="form-group">
+                <label class="editor-label">Introduca la cantidad</label>
+                @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control", @type = "number", @required = "true" } })
+                @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label class="editor-label">Seleccione el proveedor</label>
+                @Html.DropDownListFor(model => model.Nombre_Proveedor, ViewBag.Proveedores as SelectList, "Proveedores", new { @class = "form-control" })
+                @Html.HiddenFor(m => m.Id_Proveedor)
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input type="submit" value="Agregar" class="btn btn-success" onclick="AddData();" />
+        </div>
+    </form>
+}
+<script>
+    $(function () {
+        $("#Nombre_Producto").on("change", function () {
+            $("#Id_Producto").val($(this).val());
+        });
+        $("#Nombre_Proveedor").on("change", function () {
+            $("#Id_Proveedor").val($(this).val());
+        });
+    });
+
+</script>
