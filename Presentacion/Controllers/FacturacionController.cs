@@ -15,6 +15,7 @@ namespace Presentacion.Controllers
 
         readonly Factura Factura = new Factura();
         readonly Stock stock = new Stock();
+        readonly Mercancia Mercancia = new Mercancia();
 
 
         // GET: producto
@@ -41,13 +42,9 @@ namespace Presentacion.Controllers
         [HttpPost]
         private ActionResult Listado()
         {
-            ViewBag.Productos = new SelectList(stock.Listar(), "Id_Producto", "Nombre", "Id_Producto");
-            var Lista = new List<Dto_Factura>();
-
-            var model = Factura.Listar();
             //foreach (var item in model)
             //{
-            
+
             //    Lista.Add(Dto_Factura);
             //}
             //Dto_Factura Dto_Factura = new Dto_Factura
@@ -68,6 +65,25 @@ namespace Presentacion.Controllers
         public ActionResult FacturaView()
         {
             ViewBag.Productos = new SelectList(stock.Listar(), "Id_Producto", "Nombre_Producto", "Id_Producto");
+
+            var Lista = new List<Dto_Factura>();
+            var model = Factura.Listar();
+            foreach (var item in model)
+            {
+                Dto_Factura Dto_Factura = new Dto_Factura
+                {
+                    Id_Factura = item.Id_Factura,
+                    Id_Producto = (int)item.Id_Producto,
+                    Cantidad = (int)item.Cantidad,
+                    Fecha = (DateTime)item.Fecha,
+                    Descuento = (double)item.Descuento,
+                    Categoria = item.Categoria,
+                    ITBIS = (double)item.ITBIS,
+                    Total = (double)item.Total,
+                    Nombre_Producto = stock.Listar().Find(x => x.Id_Producto == item.Id_Producto).Nombre_Producto
+                };
+                Lista.Add(Dto_Factura);
+            }
             return View();
         }
 

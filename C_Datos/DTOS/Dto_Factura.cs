@@ -33,6 +33,7 @@ namespace C_Datos.DTOS
         [Required]
         public string Nombre_Producto { get; set; }
         public List<SelectListItem> Productos { get; set; }
+        public List<TProducto> Producto { get; set; }
 
     }
 }

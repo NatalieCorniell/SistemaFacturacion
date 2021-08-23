@@ -1,18 +1,18 @@
 ﻿var cartEl = document.getElementById("cart");
 var inputNameEl = document.getElementById("Nombre_Producto");
+var Nombre_Producto_val = document.getElementById("Nombre_Producto_val");
 var inputPriceEl = document.getElementById("Id_Producto");
 var totalEl = document.getElementById("total-price");
 var currentIndex = 0;
 var total = 0;
 
 function addToCart() {
-    debugger
     if (inputNameEl.value !== "" && inputPriceEl.value !== "") {
         cartEl.innerHTML +=
             '<li id="' +
             currentIndex +
         '"><label class="control ">' +
-        inputNameEl.val +
+        Nombre_Producto_val.val +
             '</label> <span class="price">' +
             inputPriceEl.value +
             ' pesos <button class="removeBtn" onclick="removeFromCart(' +

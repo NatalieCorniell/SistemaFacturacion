@@ -28,7 +28,9 @@
                     <label class="editor-label">Seleccione el Producto</label>
                     @Html.DropDownListFor(model => model.Nombre_Producto, ViewBag.Productos as SelectList, "Productos", new { @class = "form-control" })
                     @Html.HiddenFor(m => m.Id_Producto)
+
                 </div>
+                <input type="text" name="name" value="" id="Nombre_Producto_val" />
             </div>
             <div class="modal-footer">
                 <input type="submit" value="Finalizar Compra" class="btn btn-danger" onclick="AddData();" />
@@ -44,6 +46,13 @@
             $("#Id_Producto").val($(this).val());
         });
     });
-        //
+    //
+    $("#Nombre_Producto").attr("onChange", "selectedItem(this)");
+
+    function selectedItem(model) {
+        var selected = model.options[model.selectedIndex].text;
+        document.getElementById("Nombre_Producto_val").val = selected;
+    }
+
 </script>
 <script src="~/assets/js/Shop.js"></script>
