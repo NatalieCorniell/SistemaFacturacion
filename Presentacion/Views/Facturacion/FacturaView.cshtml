@@ -23,15 +23,17 @@
         {
             @Html.ValidationSummary(true)
             @Html.AntiForgeryToken()
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="editor-label">Seleccione el Producto</label>
-                    @Html.DropDownListFor(model => model.Nombre_Producto, ViewBag.Productos as SelectList, "Productos", new { @class = "form-control" })
-                    @Html.HiddenFor(m => m.Id_Producto)
-
-                </div>
-                <input type="text" name="name" value="" id="Nombre_Producto_val" />
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="editor-label">Seleccione el Producto</label>
+                @Html.DropDownListFor(model => model.Nombre_Producto, ViewBag.Productos as SelectList, "Productos", new { @class = "form-control" })
+                @Html.HiddenFor(m => m.Id_Producto)
+                @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "true" } })
+                @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+                <input type="number" name="Cantidad" value="" id="Nombre_Producto_val" />
             </div>
+            <input type="text" name="name" value="" id="Nombre_Producto_val" />
+        </div>
             <div class="modal-footer">
                 <input type="submit" value="Finalizar Compra" class="btn btn-danger" onclick="AddData();" />
             </div>
@@ -43,8 +45,25 @@
 <script>
     $(function () {
         $("#Nombre_Producto").on("change", function () {
-            $("#Id_Producto").val($(this).val());
+            producto = $("#Id_Producto").val($(this).val());
+            //
+            var _Id_Producto = document.getElementById("Id_Producto");
+            var _Cantidad = document.getElementById("Cantidad");
+            debugger
+            var valueProducto = _Id_Producto.value;
+            _Id_Producto.id = valueProducto;
+            var idProducto = _Id_Producto.id;
+
+            var Cantidad = _Cantidad.value;
+            debugger
+
+            $.post("@Url.Action("AgregarProducto", "Facturacion")/" + idProducto,
+                function (data) {
+                   $('.modal-body').html(data);
+                });
+
         });
+
     });
     //
     $("#Nombre_Producto").attr("onChange", "selectedItem(this)");
@@ -54,5 +73,9 @@
         document.getElementById("Nombre_Producto_val").val = selected;
     }
 
+    function myfunction() {
+        //
+
+    }
 </script>
 <script src="~/assets/js/Shop.js"></script>

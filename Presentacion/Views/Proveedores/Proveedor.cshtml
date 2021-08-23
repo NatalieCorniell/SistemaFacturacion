@@ -100,7 +100,7 @@
             $("#modal").modal("hide");
         }
         //Taking by ID
-          function GetbyID(ID) {
+        function GetbyID(ID) {
               $.get("@Url.Action("GetID", "Proveedores")/" + ID,
                 function (data) {
                     $('.modal-body').html(data);

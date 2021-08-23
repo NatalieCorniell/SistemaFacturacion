@@ -40,6 +40,24 @@ namespace Presentacion.Controllers
         //    return View("FacturaView", Lista);
         //}
         [HttpPost]
+        public ActionResult AgregarProducto(int? idProducto)
+        {
+            var productos = Mercancia.Listar();
+            var listaDeProductos = new List<Dto_Producto>();
+            foreach (var Prod in productos)
+            {
+                Dto_Producto dto_Producto = new Dto_Producto
+                {
+                    Id_Producto = productos.Find(x => x.Id_Producto == idProducto).Id_Producto,
+                    Nombre = productos.Find(x => x.Id_Producto == idProducto).Nombre,
+                    Precio = productos.Find(x => x.Id_Producto == idProducto).Precio
+                };
+                listaDeProductos.Add(dto_Producto);
+            }
+            return View();
+
+        }
+        [HttpPost]
         private ActionResult Listado()
         {
             //foreach (var item in model)

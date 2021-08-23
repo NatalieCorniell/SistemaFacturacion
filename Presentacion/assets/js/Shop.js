@@ -5,8 +5,10 @@ var inputPriceEl = document.getElementById("Id_Producto");
 var totalEl = document.getElementById("total-price");
 var currentIndex = 0;
 var total = 0;
+//
 
 function addToCart() {
+
     if (inputNameEl.value !== "" && inputPriceEl.value !== "") {
         cartEl.innerHTML +=
             '<li id="' +
@@ -24,6 +26,8 @@ function addToCart() {
         inputNameEl.value = "";
         inputPriceEl.value = "";
     }
+
+    
 }
 
 function removeFromCart(index) {
