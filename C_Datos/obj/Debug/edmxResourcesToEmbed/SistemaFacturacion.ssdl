@@ -49,6 +49,8 @@
     <Property Name="Fecha" Type="datetime" />
     <Property Name="Total" Type="int" />
     <Property Name="Categoria" Type="varchar" MaxLength="10" />
+    <Property Name="Id_Cliente" Type="int" />
+    <Property Name="Nombre_Cliente" Type="varchar" MaxLength="50" />
     <Property Name="Descuento" Type="float" />
     <Property Name="ITBIS" Type="float" />
   </EntityType>

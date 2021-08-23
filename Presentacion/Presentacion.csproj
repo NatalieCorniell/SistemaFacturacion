@@ -126,6 +126,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Consultas\ClienteConsultaController.cs" />
+    <Compile Include="Controllers\Consultas\EntradaConsultaController.cs" />
+    <Compile Include="Controllers\Consultas\FacturaConsultaController.cs" />
+    <Compile Include="Controllers\Consultas\ProductoConsultaController.cs" />
+    <Compile Include="Controllers\Consultas\ProveedorConsultaController.cs" />
     <Compile Include="Controllers\CRUD\ClienteController.cs" />
     <Compile Include="Controllers\FacturacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -150,8 +155,13 @@
     <Content Include="assets\img\bg-img.jpg" />
     <Content Include="assets\img\header-factura.jfif" />
     <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\chart-data.js" />
+    <Content Include="assets\js\chart.min.js" />
     <Content Include="assets\js\crud.js" />
     <Content Include="assets\js\custom-scripts.js" />
+    <Content Include="assets\js\easypiechart.js" />
+    <Content Include="assets\js\jquery-1.10.2.js" />
+    <Content Include="assets\js\jquery.metisMenu.js" />
     <Content Include="assets\js\Shop.js" />
     <Content Include="assets\materialize\css\materialize.css" />
     <Content Include="assets\materialize\css\materialize.min.css" />
@@ -235,6 +245,11 @@
     <Content Include="Views\Facturacion\Partials\EliminarPartial.cshtml" />
     <Content Include="Views\Facturacion\FacturaView.cshtml" />
     <Content Include="Views\Shared\MasterShop.cshtml" />
+    <Content Include="Views\ProductoConsulta\Consulta_Producto_View.cshtml" />
+    <Content Include="Views\ClienteConsulta\Consulta_Cliente_View.cshtml" />
+    <Content Include="Views\ProveedorConsulta\Consulta_Proveedor_View.cshtml" />
+    <Content Include="Views\EntradaConsulta\Consulta_Entrada_View.cshtml" />
+    <Content Include="Views\FacturaConsulta\Consulta_Factura_View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

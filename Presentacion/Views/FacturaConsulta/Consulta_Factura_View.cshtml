@@ -1,0 +1,90 @@
+﻿@model IEnumerable<C_Datos.DTOS.Dto_Factura>
+@{
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Listado:<b> Facturas Existentes</b> </h2>
+                </div>
+
+                <div class="col-sm-6">
+                    Buscar por: <input type="text" name="name" value="" id="searchCliente" placeholder="Cliente" /> o
+                    <input type="text" name="name" value="" id="searchfecha" placeholder="Fecha 00/00/0000" />
+
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Producto</th>
+                    <th>Categoria</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                    <th>Descuento</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model.Any())
+                    {
+                        foreach (var factura in Model.ToList())
+                        {
+                            <tr>
+                                <td>@factura.Id_Factura</td>
+                                <td>@factura.Nombre_Cliente</td>
+                                <td>@factura.Nombre_Producto</td>
+                                <td>@factura.Categoria</td>
+                                <td>@factura.Cantidad</td>
+                                <td>@factura.Fecha</td>
+                                <td>@factura.Descuento</td>
+                                <td>@factura.Total</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>
+                                <h3>Factura no encontrada</h3>
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#searchCliente").keyup(function () {
+                _this = this;
+                $.each($("table tbody tr"), function () {
+                    if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                        $(this).hide();
+                    else
+                        $(this).show();
+                }); $("#searchFecha").keyup(function () {
+                    _this = this;
+                    $.each($("table tbody tr"), function () {
+                        if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                            $(this).hide();
+                        else
+                            $(this).show();
+                    });
+                });
+
+
+    </script>
+}

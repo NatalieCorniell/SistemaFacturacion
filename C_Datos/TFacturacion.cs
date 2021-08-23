@@ -22,5 +22,7 @@ namespace C_Datos
         public string Categoria { get; set; }
         public Nullable<double> Descuento { get; set; }
         public Nullable<double> ITBIS { get; set; }
+        public string Id_Cliente { get; set; }
+        public string Nombre_Cliente { get; set; }
     }
 }

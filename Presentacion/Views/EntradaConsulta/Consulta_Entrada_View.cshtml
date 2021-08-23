@@ -1,0 +1,93 @@
+﻿@model IEnumerable<C_Datos.DTOS.Dto_Entrada>
+@{
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2>Listado:<b> Entradas Existentes</b> </h2>
+                </div>
+
+                <div class="col-sm-8">
+                    Buscar por: <input type="text" name="name" value="" id="searchProducto" placeholder="Producto" />
+                    o <input type="text" name="name" value="" id="searchProveedor" placeholder="Proveedor" />
+                    o <input type="text" name="name" value="" id="searchDateTime" placeholder="Fecha 00/00/0000" />
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th style="text-align: center">Codigo Producto</th>
+                    <th style="text-align: center">Codigo Proveedor</th>
+                    <th style="text-align: center">Cantidad</th>
+                    <th style="text-align: center">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model.Any())
+                    {
+                        foreach (var Entrada in Model.ToList())
+                        {
+                            <tr style="text-align: center">
+                                <td>@Entrada.Id_Producto</td>
+                                <td>@Entrada.Id_Proveedor</td>
+                                <td>@Entrada.Cantidad</td>
+                                <td colspan="2">@Entrada.Fecha</td>
+                                <td></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>
+                                <h3>Entrada no encontrado</h3>
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#searchProducto").keyup(function () {
+                _this = this;
+                $.each($("table tbody tr"), function () {
+                    if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                        $(this).hide();
+                    else
+                        $(this).show();
+                });
+            });
+            $("#searchProveedor").keyup(function () {
+                _this = this;
+                $.each($("table tbody tr"), function () {
+                    if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                        $(this).hide();
+                    else
+                        $(this).show();
+                });
+            });
+            $("#searchDateTime").keyup(function () {
+                _this = this;
+                $.each($("table tbody tr"), function () {
+                    if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                        $(this).hide();
+                    else
+                        $(this).show();
+                });
+            });
+        });
+    </script>
+}

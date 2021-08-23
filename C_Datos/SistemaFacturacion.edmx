@@ -54,6 +54,8 @@
           <Property Name="Fecha" Type="datetime" />
           <Property Name="Total" Type="int" />
           <Property Name="Categoria" Type="varchar" MaxLength="10" />
+          <Property Name="Id_Cliente" Type="int" />
+          <Property Name="Nombre_Cliente" Type="varchar" MaxLength="50" />
           <Property Name="Descuento" Type="float" />
           <Property Name="ITBIS" Type="float" />
         </EntityType>
@@ -259,6 +261,8 @@
           <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Descuento" Type="Double" />
           <Property Name="ITBIS" Type="Double" />
+          <Property Name="Id_Cliente" Type="String" />
+          <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TProducto">
           <Key>
@@ -479,6 +483,8 @@
           <EntitySetMapping Name="TFacturacions">
             <EntityTypeMapping TypeName="SistemaFacturacionModel.TFacturacion">
               <MappingFragment StoreEntitySet="TFacturacion">
+                <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
                 <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />

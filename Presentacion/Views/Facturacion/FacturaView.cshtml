@@ -17,23 +17,26 @@
     </div>
 </div>
 <div class="inputArea">
-    @using (Html.BeginForm("Comprar", "Facturacion", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        @Html.ValidationSummary(true)
-        @Html.AntiForgeryToken()
+    <div class="container">
 
-    <div class="modal-body">
-        <div class="form-group">
-            <label class="editor-label">Seleccione el Producto</label>
-            @Html.DropDownListFor(model => model.Nombre_Producto, ViewBag.Productos as SelectList, "Productos", new { @class = "form-control" })
-            @Html.HiddenFor(m => m.Id_Producto)
-        </div>
-    </div>
-        <div class="modal-footer">
-            <input type="submit" value="Finalizar Compra" class="btn btn-danger" onclick="AddData();" />
-        </div>
-    }
+        @using (Html.BeginForm("Comprar", "Facturacion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="editor-label">Seleccione el Producto</label>
+                    @Html.DropDownListFor(model => model.Nombre_Producto, ViewBag.Productos as SelectList, "Productos", new { @class = "form-control" })
+                    @Html.HiddenFor(m => m.Id_Producto)
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" value="Finalizar Compra" class="btn btn-danger" onclick="AddData();" />
+            </div>
+
+        }
         <button onclick="addToCart()" class="btn btn-success">Agregar Producto</button>
+    </div>
 </div>
 <script>
     $(function () {
@@ -41,6 +44,6 @@
             $("#Id_Producto").val($(this).val());
         });
     });
-    //
+        //
 </script>
 <script src="~/assets/js/Shop.js"></script>

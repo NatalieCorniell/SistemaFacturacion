@@ -509,12 +509,14 @@ div#sideNav:hover {
     max-height: 170px;
     max-width: 170px;
 }
-
+hr {
+    border-top: 1px solid #be9625 !important;
+}
 .top-navbar {
     margin: 0px;
 }
 .nav > li > a:hover, .nav > li > a:focus {
-    background-color: #533737 !important;
+    color: orange !important;
 }
 
 .top-navbar .navbar-brand {
@@ -590,11 +592,10 @@ div#sideNav:hover {
     width: 100% !important;
 }
 
-    .active-menu, .active-menu i
-{
-    background-color: #233342 !important;
-    color: #fff !important;
-}
+    .active-menu, .active-menu i {
+        background-color: #000a19 !important;
+        color: #fff !important;
+    }
 
     .active-menu i {
         color: #f44336 !important;
@@ -635,11 +636,11 @@ div#sideNav:hover {
         padding: 0;
     }
 
-        .sidebar-collapse .nav > li > a {
-            color: rgba(255, 255, 255, 0.39);
-            background: transparent;
-            text-shadow: none;
-        }
+.sidebar-collapse .nav > li > a {
+    color: rgba(255, 255, 255, 0.39);
+    background: #000a19 !important;
+    text-shadow: none;
+}
 
     .sidebar-collapse > .nav > li > a {
         padding: 8px;
@@ -684,7 +685,6 @@ ul.nav.nav-second-level.collapse.in {
 }
 
 .navbar-default {
-    border: 0px solid #1f2837;
     position: absolute;
 }
 
@@ -693,6 +693,7 @@ ul.nav.nav-second-level.collapse.in {
 }
 
 .navbar-default {
+    border: none !important;
     background-color: #000a19 !important;
 }
 
@@ -798,7 +799,11 @@ ul.dropdown-menu.dropdown-messages li a div {
 /*----------------------------------------------
     MEDIA QUERIES     
 ------------------------------------------------*/
-
+@media (min-width: 1200px) {
+    .container {
+        width: 1025px !important;
+    }
+}
 @media(min-width:768px) {
     #page-wrapper {
         margin: 0 0 0 260px;
@@ -808,7 +813,7 @@ ul.dropdown-menu.dropdown-messages li a div {
 
 
     .navbar-side {
-        width: 165px;
+        width: 240px;
         z-index: 1;
     }
 
@@ -903,6 +908,7 @@ ul.dropdown-menu.dropdown-messages li a div {
     float: left;
     font-size: 31px;
     margin-right: 6px;
+    color: orange !important;
 }
 
 .clearBoth {

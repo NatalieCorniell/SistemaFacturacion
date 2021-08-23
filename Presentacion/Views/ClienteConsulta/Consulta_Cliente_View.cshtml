@@ -1,0 +1,99 @@
+﻿@model IEnumerable<C_Datos.DTOS.Dto_Cliente>
+@{
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+<div class="container">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Listado:<b> Clientes Existentes</b> </h2>
+                </div>
+
+                <div class="col-sm-6">
+                    Buscar por: <input type="text" name="name" value="" id="search" placeholder="Nombre" /> o
+                    <input type="text" name="name" value="" id="searchCategory" placeholder="Categoria" />
+                </div>
+            </div>
+        </div>
+       Conteo: <input type="text" id="labelCount" name="name" value="" style="border: none" />
+        <table class="table table-striped table-hover">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>RNC/Cedula</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    if (Model.Any())
+                    {
+                        foreach (var Cliente in Model.ToList())
+                        {
+                            <tr>
+                                <td>@Cliente.Id_Cliente</td>
+                                <td>@Cliente.Nombre</td>
+                                <td>@Cliente.RNC</td>
+                                <td>@Cliente.Telefono</td>
+                                <td>@Cliente.Correo</td>
+                                <td>@Cliente.Categoria</td>
+                            </tr>
+                        }
+
+                    }
+                    else
+                    {
+
+                        <tr>
+                            <td>
+                                <h3>Producto no encontrado</h3>
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#search").keyup(function () {
+                _this = this;
+                $.each($("table tbody tr"), function () {
+                    if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                        $(this).hide();
+                    else
+                        $(this).show();
+                });
+            });
+            //
+            $("#searchCategory").keyup(function () {
+                var count = 0;
+                _this = this;
+                $.each($("table tbody tr"), function () {
+                    if ($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
+                var numOfVisibleRows = $('tr').filter(function () {
+                    return $(this).css('display') !== 'none';
+                }).length;
+                document.getElementById("labelCount").value = numOfVisibleRows - 1;
+            });
+        });
+      
+    </script>
+}

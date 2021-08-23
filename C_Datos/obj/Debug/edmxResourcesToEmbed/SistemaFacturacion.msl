@@ -39,6 +39,8 @@
     <EntitySetMapping Name="TFacturacions">
       <EntityTypeMapping TypeName="SistemaFacturacionModel.TFacturacion">
         <MappingFragment StoreEntitySet="TFacturacion">
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
           <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
           <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
           <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />

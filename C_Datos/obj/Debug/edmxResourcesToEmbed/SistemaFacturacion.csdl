@@ -47,6 +47,8 @@
     <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Descuento" Type="Double" />
     <Property Name="ITBIS" Type="Double" />
+    <Property Name="Id_Cliente" Type="String" />
+    <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TProducto">
     <Key>

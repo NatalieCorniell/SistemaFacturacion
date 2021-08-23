@@ -63,9 +63,13 @@ namespace Presentacion.Controllers
             }
             return Lista;
         }
-
-        public ActionResult StockView()
+        [HttpGet]
+        public ActionResult StockView(string search)
         {
+            //if (!string.IsNullOrEmpty(search))
+            //{
+            //    return View("StockView", Search(search));
+            //}
             return View(Listado());
         }
 
@@ -121,5 +125,28 @@ namespace Presentacion.Controllers
             }
             return PartialView("../Stock/Partials/EliminarPartial", _TStockProduct);
         }
+
+        //public List<Dto_Stock> Search(string searchString)
+        //{
+        //    var Lista = new List<Dto_Stock>();
+
+        //    var model = stock.Listar();
+        //    foreach (var item in model)
+        //    {
+        //        Dto_Stock Dto_Stock = new Dto_Stock
+        //        {
+        //            Id_Producto = (int)item.Id_Producto,
+        //            Nombre_Producto = Mercancia.Listar().Find(x => x.Id_Producto == item.Id_Producto).Nombre,
+        //            Id_Proveedor = Prov.Listar().Find(x => x.Id_Proveedor == item.Id_Proveedor).Id_Proveedor,
+        //            Nombre_Proveedor = Prov.Listar().Find(x => x.Id_Proveedor == item.Id_Proveedor).Nombre,
+        //            Cantidad = (int)item.Cantidad,
+        //            Fecha = (DateTime)item.Fecha,
+        //            Id_Stock = item.Id_Stock
+        //        };
+        //        Lista.Add(Dto_Stock);
+        //    }
+        //        Lista = Lista.Where(s => s.Nombre_Producto.Contains(searchString)).ToList();
+        //   return Lista;
+        //}
     }
 }
