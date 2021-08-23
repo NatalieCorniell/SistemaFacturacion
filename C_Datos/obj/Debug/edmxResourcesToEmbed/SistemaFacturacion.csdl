@@ -22,6 +22,7 @@
     <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Id_Categoria" Type="Int32" />
     <NavigationProperty Name="TCategoria" Relationship="SistemaFacturacionModel.FK_Categorias" FromRole="TCliente" ToRole="TCategoria" />
+    <NavigationProperty Name="TFacturas" Relationship="SistemaFacturacionModel.FK_ClienteFK" FromRole="TCliente" ToRole="TFactura" />
   </EntityType>
   <EntityType Name="TEntrada">
     <Key>
@@ -34,21 +35,6 @@
     <Property Name="Fecha" Type="DateTime" Precision="3" />
     <NavigationProperty Name="TProducto" Relationship="Self.FK_StockProducto" FromRole="TEntradas" ToRole="TProducto" />
     <NavigationProperty Name="TProveedor" Relationship="Self.FK_StockProveedor" FromRole="TEntradas" ToRole="TProveedor" />
-  </EntityType>
-  <EntityType Name="TFacturacion">
-    <Key>
-      <PropertyRef Name="Id_Factura" />
-    </Key>
-    <Property Name="Id_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Cantidad" Type="Int32" />
-    <Property Name="Id_Producto" Type="Int32" />
-    <Property Name="Fecha" Type="DateTime" Precision="3" />
-    <Property Name="Total" Type="Int32" />
-    <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Descuento" Type="Double" />
-    <Property Name="ITBIS" Type="Double" />
-    <Property Name="Id_Cliente" Type="String" />
-    <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TProducto">
     <Key>
@@ -100,7 +86,6 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TClientes" EntityType="Self.TCliente" />
     <EntitySet Name="TEntradas" EntityType="Self.TEntrada" />
-    <EntitySet Name="TFacturacions" EntityType="Self.TFacturacion" />
     <EntitySet Name="TProductoes" EntityType="Self.TProducto" />
     <EntitySet Name="TProveedors" EntityType="Self.TProveedor" />
     <AssociationSet Name="FK_StockProducto" Association="Self.FK_StockProducto">
@@ -154,6 +139,11 @@
     <AssociationSet Name="FK_Categorias" Association="SistemaFacturacionModel.FK_Categorias">
       <End Role="TCategoria" EntitySet="TCategorias" />
       <End Role="TCliente" EntitySet="TClientes" />
+    </AssociationSet>
+    <EntitySet Name="TFacturas" EntityType="SistemaFacturacionModel.TFactura" />
+    <AssociationSet Name="FK_ClienteFK" Association="SistemaFacturacionModel.FK_ClienteFK">
+      <End Role="TCliente" EntitySet="TClientes" />
+      <End Role="TFactura" EntitySet="TFacturas" />
     </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -222,6 +212,34 @@
       </Principal>
       <Dependent Role="TCliente">
         <PropertyRef Name="Id_Categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TFactura">
+    <Key>
+      <PropertyRef Name="Id_Factura" />
+    </Key>
+    <Property Name="Id_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Id_Producto" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Total" Type="Int32" />
+    <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Cliente" Type="Int32" />
+    <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descuento" Type="Double" />
+    <Property Name="ITBIS" Type="Double" />
+    <NavigationProperty Name="TCliente" Relationship="SistemaFacturacionModel.FK_ClienteFK" FromRole="TFactura" ToRole="TCliente" />
+  </EntityType>
+  <Association Name="FK_ClienteFK">
+    <End Type="SistemaFacturacionModel.TCliente" Role="TCliente" Multiplicity="0..1" />
+    <End Type="SistemaFacturacionModel.TFactura" Role="TFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TCliente">
+        <PropertyRef Name="Id_Cliente" />
+      </Principal>
+      <Dependent Role="TFactura">
+        <PropertyRef Name="Id_Cliente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

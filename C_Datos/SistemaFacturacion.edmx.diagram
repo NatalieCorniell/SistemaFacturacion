@@ -4,11 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="86d10236b8824d3dad7ab271f519446c" Name="Diagram1">
+      <Diagram DiagramId="86d10236b8824d3dad7ab271f519446c" Name="Diagram1" ZoomLevel="99">
         <EntityTypeShape EntityType="SistemaFacturacionModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaFacturacionModel.TCliente" Width="1.5" PointX="5.5" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaFacturacionModel.TEntrada" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SistemaFacturacionModel.TFacturacion" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaFacturacionModel.TProducto" Width="1.5" PointX="0.5" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaFacturacionModel.TProveedor" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="SistemaFacturacionModel.FK_StockProducto" ManuallyRouted="false" />
@@ -18,6 +17,8 @@
         <AssociationConnector Association="SistemaFacturacionModel.FK_StockProveedores" />
         <EntityTypeShape EntityType="SistemaFacturacionModel.TCategoria" Width="1.5" PointX="8.125" PointY="4.625" />
         <AssociationConnector Association="SistemaFacturacionModel.FK_Categorias" />
+        <EntityTypeShape EntityType="SistemaFacturacionModel.TFactura" Width="1.5" PointX="7.75" PointY="7.75" />
+        <AssociationConnector Association="SistemaFacturacionModel.FK_ClienteFK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,7 +12,7 @@ namespace C_Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class TFacturacion
+    public partial class TFactura
     {
         public int Id_Factura { get; set; }
         public Nullable<int> Cantidad { get; set; }
@@ -20,9 +20,11 @@ namespace C_Datos
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<int> Total { get; set; }
         public string Categoria { get; set; }
+        public Nullable<int> Id_Cliente { get; set; }
+        public string Nombre_Cliente { get; set; }
         public Nullable<double> Descuento { get; set; }
         public Nullable<double> ITBIS { get; set; }
-        public string Id_Cliente { get; set; }
-        public string Nombre_Cliente { get; set; }
+    
+        public virtual TCliente TCliente { get; set; }
     }
 }

@@ -44,7 +44,7 @@
           <Property Name="Id_Producto" Type="int" />
           <Property Name="Fecha" Type="datetime" />
         </EntityType>
-        <EntityType Name="TFacturacion">
+        <EntityType Name="TFactura">
           <Key>
             <PropertyRef Name="Id_Factura" />
           </Key>
@@ -98,6 +98,18 @@
             </Principal>
             <Dependent Role="TCliente">
               <PropertyRef Name="Id_Categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClienteFK">
+          <End Role="TCliente" Type="Self.TCliente" Multiplicity="0..1" />
+          <End Role="TFactura" Type="Self.TFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCliente">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="TFactura">
+              <PropertyRef Name="Id_Cliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -185,13 +197,17 @@
           <EntitySet Name="TCategoria" EntityType="Self.TCategoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TCliente" EntityType="Self.TCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEntradas" EntityType="Self.TEntradas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TFacturacion" EntityType="Self.TFacturacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TFactura" EntityType="Self.TFactura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TProducto" EntityType="Self.TProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TProveedor" EntityType="Self.TProveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TStockProducts" EntityType="Self.TStockProducts" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Categorias" Association="Self.FK_Categorias">
             <End Role="TCategoria" EntitySet="TCategoria" />
             <End Role="TCliente" EntitySet="TCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClienteFK" Association="Self.FK_ClienteFK">
+            <End Role="TCliente" EntitySet="TCliente" />
+            <End Role="TFactura" EntitySet="TFactura" />
           </AssociationSet>
           <AssociationSet Name="FK_StockProd" Association="Self.FK_StockProd">
             <End Role="TProducto" EntitySet="TProducto" />
@@ -236,6 +252,7 @@
           <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Id_Categoria" Type="Int32" />
           <NavigationProperty Name="TCategoria" Relationship="SistemaFacturacionModel.FK_Categorias" FromRole="TCliente" ToRole="TCategoria" />
+          <NavigationProperty Name="TFacturas" Relationship="SistemaFacturacionModel.FK_ClienteFK" FromRole="TCliente" ToRole="TFactura" />
         </EntityType>
         <EntityType Name="TEntrada">
           <Key>
@@ -248,21 +265,6 @@
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <NavigationProperty Name="TProducto" Relationship="Self.FK_StockProducto" FromRole="TEntradas" ToRole="TProducto" />
           <NavigationProperty Name="TProveedor" Relationship="Self.FK_StockProveedor" FromRole="TEntradas" ToRole="TProveedor" />
-        </EntityType>
-        <EntityType Name="TFacturacion">
-          <Key>
-            <PropertyRef Name="Id_Factura" />
-          </Key>
-          <Property Name="Id_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cantidad" Type="Int32" />
-          <Property Name="Id_Producto" Type="Int32" />
-          <Property Name="Fecha" Type="DateTime" Precision="3" />
-          <Property Name="Total" Type="Int32" />
-          <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Descuento" Type="Double" />
-          <Property Name="ITBIS" Type="Double" />
-          <Property Name="Id_Cliente" Type="String" />
-          <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TProducto">
           <Key>
@@ -314,7 +316,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TClientes" EntityType="Self.TCliente" />
           <EntitySet Name="TEntradas" EntityType="Self.TEntrada" />
-          <EntitySet Name="TFacturacions" EntityType="Self.TFacturacion" />
           <EntitySet Name="TProductoes" EntityType="Self.TProducto" />
           <EntitySet Name="TProveedors" EntityType="Self.TProveedor" />
           <AssociationSet Name="FK_StockProducto" Association="Self.FK_StockProducto">
@@ -368,6 +369,11 @@
           <AssociationSet Name="FK_Categorias" Association="SistemaFacturacionModel.FK_Categorias">
             <End Role="TCategoria" EntitySet="TCategorias" />
             <End Role="TCliente" EntitySet="TClientes" />
+          </AssociationSet>
+          <EntitySet Name="TFacturas" EntityType="SistemaFacturacionModel.TFactura" />
+          <AssociationSet Name="FK_ClienteFK" Association="SistemaFacturacionModel.FK_ClienteFK">
+            <End Role="TCliente" EntitySet="TClientes" />
+            <End Role="TFactura" EntitySet="TFacturas" />
           </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -439,6 +445,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TFactura">
+          <Key>
+            <PropertyRef Name="Id_Factura" />
+          </Key>
+          <Property Name="Id_Factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Id_Producto" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Total" Type="Int32" />
+          <Property Name="Categoria" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Cliente" Type="Int32" />
+          <Property Name="Nombre_Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descuento" Type="Double" />
+          <Property Name="ITBIS" Type="Double" />
+          <NavigationProperty Name="TCliente" Relationship="SistemaFacturacionModel.FK_ClienteFK" FromRole="TFactura" ToRole="TCliente" />
+        </EntityType>
+        <Association Name="FK_ClienteFK">
+          <End Type="SistemaFacturacionModel.TCliente" Role="TCliente" Multiplicity="0..1" />
+          <End Type="SistemaFacturacionModel.TFactura" Role="TFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TCliente">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="TFactura">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -477,22 +511,6 @@
                 <ScalarProperty Name="Id_Proveedor" ColumnName="Id_Proveedor" />
                 <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TFacturacions">
-            <EntityTypeMapping TypeName="SistemaFacturacionModel.TFacturacion">
-              <MappingFragment StoreEntitySet="TFacturacion">
-                <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
-                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
-                <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -558,6 +576,22 @@
               <MappingFragment StoreEntitySet="TCategoria">
                 <ScalarProperty Name="Categoria" ColumnName="Categoria" />
                 <ScalarProperty Name="Id_Categoria" ColumnName="Id_Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TFacturas">
+            <EntityTypeMapping TypeName="SistemaFacturacionModel.TFactura">
+              <MappingFragment StoreEntitySet="TFactura">
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

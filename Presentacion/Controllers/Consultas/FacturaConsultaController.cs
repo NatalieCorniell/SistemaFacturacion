@@ -27,7 +27,7 @@ namespace Presentacion.Controllers.Consultas
                 Dto_Factura Dto_Factura = new Dto_Factura
                 {
                    Id_Factura = item.Id_Factura,
-                   Id_Cliente = item.Id_Cliente,
+                   Id_Cliente = (int)item.Id_Cliente,
                    Id_Producto = (int)item.Id_Producto,
                    ITBIS = (double)item.ITBIS,
                    Cantidad = (int)item.Cantidad,

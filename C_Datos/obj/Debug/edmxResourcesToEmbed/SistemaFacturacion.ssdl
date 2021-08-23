@@ -39,7 +39,7 @@
     <Property Name="Id_Producto" Type="int" />
     <Property Name="Fecha" Type="datetime" />
   </EntityType>
-  <EntityType Name="TFacturacion">
+  <EntityType Name="TFactura">
     <Key>
       <PropertyRef Name="Id_Factura" />
     </Key>
@@ -93,6 +93,18 @@
       </Principal>
       <Dependent Role="TCliente">
         <PropertyRef Name="Id_Categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClienteFK">
+    <End Role="TCliente" Type="Self.TCliente" Multiplicity="0..1" />
+    <End Role="TFactura" Type="Self.TFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TCliente">
+        <PropertyRef Name="Id_Cliente" />
+      </Principal>
+      <Dependent Role="TFactura">
+        <PropertyRef Name="Id_Cliente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -180,13 +192,17 @@
     <EntitySet Name="TCategoria" EntityType="Self.TCategoria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TCliente" EntityType="Self.TCliente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TEntradas" EntityType="Self.TEntradas" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TFacturacion" EntityType="Self.TFacturacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TFactura" EntityType="Self.TFactura" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TProducto" EntityType="Self.TProducto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TProveedor" EntityType="Self.TProveedor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TStockProducts" EntityType="Self.TStockProducts" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Categorias" Association="Self.FK_Categorias">
       <End Role="TCategoria" EntitySet="TCategoria" />
       <End Role="TCliente" EntitySet="TCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClienteFK" Association="Self.FK_ClienteFK">
+      <End Role="TCliente" EntitySet="TCliente" />
+      <End Role="TFactura" EntitySet="TFactura" />
     </AssociationSet>
     <AssociationSet Name="FK_StockProd" Association="Self.FK_StockProd">
       <End Role="TProducto" EntitySet="TProducto" />

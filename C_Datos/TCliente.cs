@@ -14,6 +14,12 @@ namespace C_Datos
     
     public partial class TCliente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TCliente()
+        {
+            this.TFacturas = new HashSet<TFactura>();
+        }
+    
         public int Id_Cliente { get; set; }
         public string Nombre { get; set; }
         public string RNC { get; set; }
@@ -23,5 +29,7 @@ namespace C_Datos
         public Nullable<int> Id_Categoria { get; set; }
     
         public virtual TCategoria TCategoria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TFactura> TFacturas { get; set; }
     }
 }

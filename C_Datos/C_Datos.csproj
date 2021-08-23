@@ -111,7 +111,7 @@
     <Compile Include="TEntrada.cs">
       <DependentUpon>SistemaFacturacion.tt</DependentUpon>
     </Compile>
-    <Compile Include="TFacturacion.cs">
+    <Compile Include="TFactura.cs">
       <DependentUpon>SistemaFacturacion.tt</DependentUpon>
     </Compile>
     <Compile Include="TProducto.cs">

@@ -29,7 +29,7 @@ namespace C_Datos.DTOS
         [Required]
         public string Nombre_Cliente { get; set; }
         [Required]
-        public string Id_Cliente { get; set; }
+        public int Id_Cliente { get; set; }
         [Required]
         public string Nombre_Producto { get; set; }
         public List<SelectListItem> Productos { get; set; }

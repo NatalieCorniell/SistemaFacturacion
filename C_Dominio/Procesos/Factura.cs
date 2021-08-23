@@ -13,26 +13,26 @@ namespace C_Dominio.Procesos
 
         readonly SistemaFacturacionEntities db = new SistemaFacturacionEntities();
 
-        public void Guardar(TFacturacion model)
+        public void Guardar(TFactura model)
         {
-            db.TFacturacions.Add(model);
+            db.TFacturas.Add(model);
             db.Entry(model).State = EntityState.Added;
             db.SaveChanges();
         }
-        public List<TFacturacion> Listar()
+        public List<TFactura> Listar()
         {
-            return db.TFacturacions.ToList();
+            return db.TFacturas.ToList();
         }
         //public List<TCategoria> Categorias()
         //{
         //    return db.TCategorias.ToList();
         //}
-        //public void Editar(TFacturacion Element)
+        //public void Editar(Factura Element)
         //{
-        //    var cliente = new TFacturacion();
+        //    var cliente = new Factura();
         //    using (var context = new SistemaFacturacionEntities())
         //    {
-        //        cliente = (context.TFacturacions.Where(a => a.Id_Factura == Element.Id_Factura)).SingleOrDefault();
+        //        cliente = (context.Facturas.Where(a => a.Id_Factura == Element.Id_Factura)).SingleOrDefault();
         //    }
 
         //    if (cliente != null)
@@ -57,7 +57,7 @@ namespace C_Dominio.Procesos
         //{
         //    using (SistemaFacturacionEntities Context = new SistemaFacturacionEntities())
         //    {
-        //        TFacturacion cliente = new TFacturacion { Id_Cliente = index };
+        //        Factura cliente = new Factura { Id_Cliente = index };
         //        Context.Entry(cliente).State = EntityState.Deleted;
         //        Context.SaveChanges();
         //    }

@@ -36,22 +36,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TFacturacions">
-      <EntityTypeMapping TypeName="SistemaFacturacionModel.TFacturacion">
-        <MappingFragment StoreEntitySet="TFacturacion">
-          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
-          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
-          <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-          <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TProductoes">
       <EntityTypeMapping TypeName="SistemaFacturacionModel.TProducto">
         <MappingFragment StoreEntitySet="TProducto">
@@ -114,6 +98,22 @@
         <MappingFragment StoreEntitySet="TCategoria">
           <ScalarProperty Name="Categoria" ColumnName="Categoria" />
           <ScalarProperty Name="Id_Categoria" ColumnName="Id_Categoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TFacturas">
+      <EntityTypeMapping TypeName="SistemaFacturacionModel.TFactura">
+        <MappingFragment StoreEntitySet="TFactura">
+          <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
